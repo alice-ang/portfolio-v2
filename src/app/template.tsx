@@ -36,12 +36,13 @@ const opacity = {
     opacity: 0.5,
   },
 };
+
 export default function Template({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nbOfColumns = 5;
+  const numOfCols = 5;
 
   return (
     <motion.div>
@@ -53,7 +54,7 @@ export default function Template({
           exit="exit"
           initial="initial"
         />
-        {[...Array(nbOfColumns)].map((_, i) => {
+        {[...Array(numOfCols)].map((_, i) => {
           return (
             <motion.div
               key={i}
@@ -71,32 +72,3 @@ export default function Template({
     </motion.div>
   );
 }
-
-// .stairs{
-//     .transition-container{
-//         position: fixed;
-//         width: 100vw;
-//         height: 100vh;
-//         display: flex;
-//         left: 0;
-//         top: 0;
-//         pointer-events: none;
-//         z-index: 2;
-//         div{
-//             position: relative;
-//             height: 100%;
-//             width: 100%;
-//             background-color: black;
-//         }
-//     }
-//     .transition-background{
-//         position: fixed;
-//         width: 100%;
-//         height: 100vh;
-//         background-color: black;
-//         z-index: 1;
-//         pointer-events: none;
-//         top: 0;
-//         left: 0;
-//     }
-// }
