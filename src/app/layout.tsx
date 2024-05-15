@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { feta, poppins } from "./fonts";
+import { Header } from "@/components";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${feta.className}`}>
+      <body className={`${poppins.variable} ${feta.className} pt-24`}>
+        <Header />
         {children}
       </body>
     </html>

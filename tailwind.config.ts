@@ -12,6 +12,7 @@ const config: Config = {
         palette: {
           yellow: "#E7CC3C",
           background: "#1F1F1F",
+          darkBackground: "#131214",
           lightGrey: "#D9D9D9",
           white: "#ffffff",
         },
