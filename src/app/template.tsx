@@ -1,48 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
-const expand = {
-  initial: {
-    top: 0,
-  },
-  enter: (i: number) => ({
-    top: "100vh",
-    transition: {
-      duration: 0.4,
-      delay: 0.05 * i,
-      ease: [0.215, 0.61, 0.355, 1],
-    },
-    transitionEnd: { height: "0", top: "0" },
-  }),
-  exit: (i: number) => ({
-    height: "100vh",
-    transition: {
-      duration: 0.4,
-      delay: 0.05 * i,
-      ease: [0.215, 0.61, 0.355, 1],
-    },
-  }),
-};
-
-const opacity = {
-  initial: {
-    opacity: 0.5,
-  },
-  enter: {
-    opacity: 0,
-  },
-  exit: {
-    opacity: 0.5,
-  },
-};
+import { opacity, expand } from "@/lib/misc";
 
 export default function Template({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const numOfCols = 5;
+  const numOfCols = 8;
 
   return (
     <motion.div>
