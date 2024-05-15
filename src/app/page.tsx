@@ -75,8 +75,8 @@ export default function Home() {
               Lorem ipsum dolor sit amet
             </h2>
             <p>
-              I’m a frontend developer with a weak spot for making things fun
-              and looking pretty ✨
+              Quisque finibus felis erat, ut consequat mauris placerat aliquet.
+              ✨
             </p>
           </div>
         </Constraints>
