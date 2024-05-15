@@ -8,13 +8,13 @@ export default function Template({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const numOfCols = 8;
+  const numOfCols = 6;
 
   return (
     <motion.div>
       <div className="fixed w-screen h-screen flex top-0 left-0 pointer-events-none	z-10">
         <motion.div
-          className="fixed w-full h-full bg-black z-4 top-0 left-0 pointer-events-none"
+          className="fixed w-full h-full bg-palette-yellow z-4 top-0 left-0 pointer-events-none"
           variants={opacity}
           animate="enter"
           exit="exit"
@@ -29,7 +29,7 @@ export default function Template({
               animate="enter"
               exit="exit"
               initial="initial"
-              className="relative h-full w-full bg-black"
+              className="relative h-full w-full bg-palette-yellow"
             />
           );
         })}

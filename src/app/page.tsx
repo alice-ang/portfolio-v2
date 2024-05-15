@@ -22,7 +22,7 @@ export default function Home() {
           <Constraints>
             <div className="grid grid-cols-2 gap-16 w-full">
               <div className="col-span-2 md:col-span-1">
-                <h1 className="text-palette-lightGrey">
+                <h1 className="text-palette-lightGrey main-title">
                   Frontend <br />
                   developer
                 </h1>
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
           <Constraints>
             <div className="flex flex-row justify-end">
-              <h1 className="text-palette-lightGrey text-right">
+              <h1 className="text-palette-lightGrey text-right main-title main-title">
                 Alice <br />
                 Anglesjö
               </h1>
@@ -72,7 +72,7 @@ export default function Home() {
         <Constraints>
           <div className="space-y-2">
             <h2 className="text-palette-yellow underline">
-              Who the f*** is Alice?
+              Lorem ipsum dolor sit amet
             </h2>
             <p>
               I’m a frontend developer with a weak spot for making things fun

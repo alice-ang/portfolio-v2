@@ -42,6 +42,17 @@ body {
 }
 
 @layer utilities {
+  .main-title {
+    @apply text-8xl md:text-9xl;
+    @apply font-feta;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 h6,

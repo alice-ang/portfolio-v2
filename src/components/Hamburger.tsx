@@ -1,5 +1,5 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const path01Variants = {
@@ -14,28 +14,32 @@ const path02Variants = {
 };
 
 type HamburgerProps = {
-  onClick: () => void;
+  isClicked: boolean;
 };
-export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
-  const [isOpen, setOpen] = useState(false);
+export const Hamburger: FC<HamburgerProps> = ({ isClicked }) => {
+  const [isOpen, setOpen] = useState(isClicked);
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
 
-  const click = async () => {
-    setOpen(!isOpen);
-    if (!isOpen) {
-      await path02Controls.start(path02Variants.moving);
-      path01Controls.start(path01Variants.open);
-      path02Controls.start(path02Variants.open);
-    } else {
-      path01Controls.start(path01Variants.closed);
-      await path02Controls.start(path02Variants.moving);
-      path02Controls.start(path02Variants.closed);
-    }
-  };
+  useCallback(() => {
+    console.log("callback");
+    const click = async () => {
+      setOpen(!isOpen);
+      if (!isOpen) {
+        await path02Controls.start(path02Variants.moving);
+        path01Controls.start(path01Variants.open);
+        path02Controls.start(path02Variants.open);
+      } else {
+        path01Controls.start(path01Variants.closed);
+        await path02Controls.start(path02Variants.moving);
+        path02Controls.start(path02Variants.closed);
+      }
+    };
+    click();
+  }, [isClicked]);
 
   return (
-    <button onClick={click}>
+    <div>
       <svg width="56" height="56" viewBox="0 0 24 24">
         <motion.path
           {...path01Variants.closed}
@@ -50,6 +54,6 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
           stroke="#FFFFFF"
         />
       </svg>
-    </button>
+    </div>
   );
 };
