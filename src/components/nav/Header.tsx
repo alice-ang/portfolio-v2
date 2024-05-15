@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Hamburger } from "../Hamburger";
 import { Constraints } from "../Constraints";
 import { AnimatePresence, motion } from "framer-motion";
-import { opacity, expand } from "@/lib/misc";
 import { Nav } from "./Nav";
 import { usePathname } from "next/navigation";
 import { background } from "./animate";
+import Link from "next/link";
 
 export const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -19,9 +19,11 @@ export const Header = () => {
     <div className="bg-palette-darkBackground fixed w-full box-border	z-10 top-0">
       <Constraints>
         <nav className="flex flex-row justify-between">
-          <h2>
-            A<span className="text-palette-yellow">.</span>
-          </h2>
+          <Link href="/" passHref className="main-title">
+            <h2>
+              A<span className="text-palette-yellow">.</span>
+            </h2>
+          </Link>
           <button onClick={() => setOpen(!isOpen)}>
             <Hamburger isClicked={isOpen} />
           </button>
