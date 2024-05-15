@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+}
+
+@layer base {
+  body {
+    @apply bg-palette-background;
+    @apply overscroll-none;
+    @apply overflow-x-hidden;
+  }
+  html {
+    @apply bg-palette-background;
+    @apply text-white;
+    @apply overscroll-none;
+    @apply overflow-x-hidden;
+  }
+
+  h1 {
+    @apply text-9xl;
+  }
+  h2 {
+    @apply text-6xl;
+  }
+
+  h3 {
+    @apply text-5xl;
+  }
+  h4 {
+    @apply text-3xl;
+  }
+  p {
+    @apply text-palette-lightGrey;
+    @apply text-2xl;
+    @apply leading-7;
+  }
+  footer p {
+    @apply text-white;
+  }
+}
+
+@layer utilities {
+}
+
+h6,
+p,
+a {
+  font-family: var(--font-poppins);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+button,
+button a {
+  font-family: var(--font-feta);
+  letter-spacing: 0.025em;
+  text-transform: "uppercase";
+}
