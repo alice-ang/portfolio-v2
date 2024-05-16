@@ -2,7 +2,13 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-export const TextTyping = ({ text }: { text: string }) => {
+export const TextTyping = ({
+  text,
+  duration = 0.25,
+}: {
+  text: string;
+  duration?: number;
+}) => {
   return (
     <>
       {text.split("").map((letter, i) => (
@@ -10,7 +16,7 @@ export const TextTyping = ({ text }: { text: string }) => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{
-            duration: 0.25,
+            duration: duration,
             delay: i / 16,
           }}
           key={i}

@@ -33,11 +33,21 @@ body {
   }
   p {
     @apply text-palette-lightGrey;
-    @apply text-2xl;
+    @apply text-xl;
     @apply leading-7;
   }
   footer p {
     @apply text-white;
+  }
+
+  table {
+    @apply font-poppins text-palette-lightGrey text-2xl;
+  }
+  table tr {
+    @apply border-t border-palette-lightGrey py-4;
+  }
+  table td {
+    @apply py-4 last:text-right;
   }
 }
 
