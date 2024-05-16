@@ -46,9 +46,8 @@ body {
     @apply text-8xl md:text-9xl;
     @apply font-feta;
   }
-
-  .small {
-    
+  .external-link {
+    @apply font-poppins text-palette-lightGrey uppercase hover:underline;
   }
 }
 

@@ -9,6 +9,7 @@ import { background } from "./animate";
 import Link from "next/link";
 import { WeatherObject } from "@/lib/types";
 import Image from "next/image";
+import { Logo } from "../Logo";
 
 export const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -42,11 +43,7 @@ export const Header = () => {
     <div className="bg-palette-darkBackground fixed w-full box-border	z-10 top-0">
       <Constraints>
         <nav className="flex flex-row justify-between">
-          <Link href="/" passHref className="main-title">
-            <h2>
-              A<span className="text-palette-yellow">.</span>
-            </h2>
-          </Link>
+          <Logo>A</Logo>
           <div className="flex space-x-16">
             <div className=" flex flex-row items-center">
               {localWeather.current && (
