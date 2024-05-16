@@ -96,10 +96,12 @@ export const Nav = () => {
             {["alice@get-flick.app", "linkedin", "githubb"].map(
               (link, index) => (
                 <li
-                  className="font-poppins text-palette-lightGrey uppercase"
+                  className="font-poppins text-palette-lightGrey uppercase hover:underline"
                   key={index * 0.1}
                 >
-                  {link}
+                  <Link href={"/"} passHref target="_blank">
+                    {link}
+                  </Link>
                 </li>
               )
             )}

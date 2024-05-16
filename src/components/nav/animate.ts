@@ -22,7 +22,7 @@ export const height = {
   },
 
   enter: {
-    height: "90vh",
+    height: "86vh",
     transition,
   },
 
