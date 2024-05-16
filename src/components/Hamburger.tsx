@@ -1,5 +1,5 @@
 "use client";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 const path01Variants = {
@@ -21,11 +21,10 @@ export const Hamburger: FC<HamburgerProps> = ({ isClicked }) => {
   const path01Controls = useAnimation();
   const path02Controls = useAnimation();
 
-  useCallback(() => {
-    console.log("callback");
+  useEffect(() => {
     const click = async () => {
-      setOpen(!isOpen);
-      if (!isOpen) {
+      setOpen(!isClicked);
+      if (isOpen) {
         await path02Controls.start(path02Variants.moving);
         path01Controls.start(path01Variants.open);
         path02Controls.start(path02Variants.open);
@@ -35,12 +34,13 @@ export const Hamburger: FC<HamburgerProps> = ({ isClicked }) => {
         path02Controls.start(path02Variants.closed);
       }
     };
+
     click();
   }, [isClicked]);
 
   return (
     <div>
-      <svg width="56" height="56" viewBox="0 0 24 24">
+      <svg width="42" height="42" viewBox="0 0 24 24">
         <motion.path
           {...path01Variants.closed}
           animate={path01Controls}

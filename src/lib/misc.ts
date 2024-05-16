@@ -33,3 +33,23 @@ export const opacity = {
     opacity: 0.6,
   },
 };
+
+export const getLocalTime = (dateString: string): string => {
+  // Parse the string into a Date object
+  const date = new Date(dateString);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    throw new Error("Invalid date string");
+  }
+
+  // Format the Date object to get the local time
+  const options: Intl.DateTimeFormatOptions = {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false, // Use 24-hour format
+  };
+
+  return date.toLocaleTimeString(undefined, options);
+};

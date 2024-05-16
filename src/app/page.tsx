@@ -1,20 +1,7 @@
-"use client";
-
-import { Constraints } from "@/components";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { Constraints, ScrollingText } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
-
-  const scaleSpring = useSpring(scrollYProgress, {
-    stiffness: 200,
-    damping: 40,
-  });
-
-  const x = useTransform(scaleSpring, [0, 1], [0, -100]);
-  const invert = useTransform(scaleSpring, [0, 1], [-100, 10]);
-
   return (
     <main className="flex flex-col justify-between items-stretch min-h-screen">
       <section className="py-24">
@@ -33,30 +20,40 @@ export default function Home() {
                     src={"/alice.png"}
                     alt="Profile picture "
                     fill
-                    className="aspect-[9/16] absolute bottom-0 scale-110 hover:scale-125 origin-bottom hover:grayscale-0 grayscale transition duration-300 ease-in-out"
+                    className="aspect-[9/16] absolute bottom-0 scale-110 origin-bottom hover:grayscale-0 grayscale transition duration-300 ease-in-out"
                   />
                 </div>
               </div>
             </div>
           </Constraints>
           <div className="space-y-4">
-            <motion.div style={{ x }} className="flex flex-row space-x-8">
-              {Array.from({ length: 6 }).map(() => (
-                <h6 className="font-poppins underline uppercase whitespace-nowrap	text-5xl">
-                  React Native
-                </h6>
-              ))}
-            </motion.div>
-            <motion.div
-              style={{ x: invert }}
-              className="flex flex-row space-x-8"
-            >
-              {Array.from({ length: 6 }).map(() => (
-                <h6 className="font-poppins underline uppercase whitespace-nowrap	text-5xl">
-                  React Native
-                </h6>
-              ))}
-            </motion.div>
+            <ScrollingText
+              repeat={4}
+              text={[
+                "React native",
+                "GraphQL",
+                "Figma",
+                "NextJs",
+                "Expo",
+                "Hygraph",
+                "React",
+                "Supabase",
+              ]}
+            />
+            <ScrollingText
+              repeat={4}
+              invert
+              text={[
+                "Tailwind",
+                "Tanstack query",
+                "Framer-motion",
+                "Prismic",
+                "Firebase",
+                "Hygraph",
+                "Typescript",
+                "Flutter",
+              ]}
+            />
           </div>
           <Constraints>
             <div className="flex flex-row justify-end">

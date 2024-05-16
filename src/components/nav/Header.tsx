@@ -7,14 +7,37 @@ import { Nav } from "./Nav";
 import { usePathname } from "next/navigation";
 import { background } from "./animate";
 import Link from "next/link";
+import { WeatherObject } from "@/lib/types";
+import Image from "next/image";
 
 export const Header = () => {
   const [isOpen, setOpen] = useState(false);
   const pathname = usePathname();
+  const [localWeather, setLocalWeather] = useState<Partial<WeatherObject>>({});
+
+  useEffect(() => {
+    // const getWeather = async () => {
+    //   try {
+    //     const response = await fetch("/api/weather", {
+    //       method: "GET",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     });
+    //     const data: Partial<WeatherObject> = await response.json();
+    //     setLocalWeather(data);
+    //     console.log(data);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // getWeather();
+  }, []);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
   return (
     <div className="bg-palette-darkBackground fixed w-full box-border	z-10 top-0">
       <Constraints>
@@ -24,9 +47,29 @@ export const Header = () => {
               A<span className="text-palette-yellow">.</span>
             </h2>
           </Link>
-          <button onClick={() => setOpen(!isOpen)}>
-            <Hamburger isClicked={isOpen} />
-          </button>
+          <div className="flex space-x-16">
+            <div className=" flex flex-row items-center">
+              {localWeather.current && (
+                <div className="flex space-x-2 items-center">
+                  <p className="text-palette-lightGrey text-xs">
+                    {Math.round(localWeather.current?.temp)}°C{" "}
+                    <span className="font-bold text-palette-white">Skövde</span>
+                    , Sweden
+                  </p>
+                  <Image
+                    src={`https://openweathermap.org/img/wn/${localWeather.current.weather[0].icon}@2x.png`}
+                    alt={localWeather.current.weather[0].description}
+                    width={30}
+                    height={30}
+                  />
+                </div>
+              )}
+            </div>
+
+            <button onClick={() => setOpen(!isOpen)}>
+              <Hamburger isClicked={isOpen} />
+            </button>
+          </div>
         </nav>
       </Constraints>
       <motion.div
