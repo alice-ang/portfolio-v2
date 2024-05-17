@@ -69,7 +69,7 @@ export default function Home() {
       <section className="py-24">
         <Constraints>
           <div className="grid grid-cols-12 gap-4 ">
-            <div className="col-span-12 md:col-span-6 xl:col-span-7 space-y-2">
+            <div className="col-span-12 md:col-span-6 xl:col-span-8 space-y-2">
               <h2 className="text-palette-yellow">Who the f*** is Alice?</h2>
               <p>
                 I’m a freelance creative developer from Amsterdam, the
@@ -84,7 +84,16 @@ export default function Home() {
                 University of Applied Sciences.
               </p>
             </div>
-            <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-red-100 aspect-square"></div>
+            <div className="col-span-12 md:col-span-6 xl:col-span-4 relative aspect-square">
+              <Image
+                src={
+                  " https://alice-ang.vercel.app/_next/image?url=%2Fvan.png&w=3840&q=75"
+                }
+                alt="Profile picture "
+                fill
+                className="object-cover bg-center "
+              />
+            </div>
           </div>
         </Constraints>
       </section>

@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "openweathermap.org",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "alice-ang.vercel.app",
+        port: "",
+      },
     ],
   },
 };

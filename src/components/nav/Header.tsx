@@ -17,22 +17,24 @@ export const Header = () => {
   const [localWeather, setLocalWeather] = useState<Partial<WeatherObject>>({});
 
   useEffect(() => {
-    // const getWeather = async () => {
-    //   try {
-    //     const response = await fetch("/api/weather", {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     });
-    //     const data: Partial<WeatherObject> = await response.json();
-    //     setLocalWeather(data);
-    //     console.log(data);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-    // getWeather();
+    const getWeather = async () => {
+      try {
+        const response = await fetch("/api/weather", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data: Partial<WeatherObject> = await response.json();
+        setLocalWeather(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (process.env.NEXT_PUBLIC_ENV === "prod") {
+      getWeather();
+    }
   }, []);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <div className="bg-palette-darkBackground fixed w-full box-border	z-10 top-0">
+    <div className="bg-palette-darkBackground fixed w-full box-border	z-10 ">
       <Constraints>
         <nav className="flex flex-row justify-between">
           <Logo>A</Logo>

@@ -7,3 +7,4 @@ export * from "./Logo";
 export * from "./Footer";
 export * from "./ParallaxImage";
 export * from "./Table";
+export * from "./HorizontalScroll";
