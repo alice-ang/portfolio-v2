@@ -42,7 +42,7 @@ export const Header = () => {
   }, [pathname]);
 
   return (
-    <div className="bg-palette-darkBackground sticky w-full box-border	z-10 top-0">
+    <div className="bg-palette-darkBackground fixed w-full box-border	z-10 ">
       <Constraints>
         <nav className="flex flex-row justify-between">
           <Logo>A</Logo>

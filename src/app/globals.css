@@ -51,6 +51,9 @@ body {
   table td {
     @apply py-4 last:text-right;
   }
+  main {
+    @apply min-h-screen;
+  }
 }
 
 @layer utilities {

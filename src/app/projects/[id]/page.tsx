@@ -23,7 +23,7 @@ export default function About() {
   return (
     <div
       ref={targetRef}
-      className="relative h-[400vh]  mx-auto max-w-screen-2xl py-24"
+      className="relative h-[400vh]  mx-auto max-w-screen-2xl"
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden flex-col justify-center space-y-4 md:space-y-8 p-4">
         <div>
