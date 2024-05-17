@@ -31,6 +31,7 @@ export const height = {
     transition,
   },
 };
+
 export const translate = {
   initial: {
     y: "100%",

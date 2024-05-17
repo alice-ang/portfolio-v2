@@ -1,3 +1,6 @@
+import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from "clsx";
+
 export const expand = {
   initial: {
     top: 0,
@@ -53,3 +56,7 @@ export const getLocalTime = (dateString: string): string => {
 
   return date.toLocaleTimeString(undefined, options);
 };
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

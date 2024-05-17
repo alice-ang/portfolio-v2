@@ -1,4 +1,7 @@
-import { Constraints, TextTyping } from "@/components";
+import { Constraints } from "@/components";
+import { Table } from "@/components/Table";
+import { jobs } from "@/lib/mock";
+import { cn } from "@/lib/utils";
 
 export default function About() {
   return (
@@ -25,28 +28,24 @@ export default function About() {
           </div>
         </Constraints>
       </section>
+      <section className="">
+        <Constraints>
+          <div className="flex items-center space-x-8 justify-center">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div
+                className={cn(
+                  i % 2 ? "-rotate-2" : "rotate-2",
+                  "bg-red-100 aspect-square h-full w-full hover:rotate-0 animation-transition"
+                )}
+              />
+            ))}
+          </div>
+        </Constraints>
+      </section>
       <section className="py-24">
         <Constraints>
           <h3 className="pb-4">Experience</h3>
-          <table className="table-auto w-full">
-            <tbody>
-              <tr>
-                <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                <td>Malcolm Lockyer</td>
-                <td>1961</td>
-              </tr>
-              <tr>
-                <td>Witchy Woman</td>
-                <td>The Eagles</td>
-                <td>1972</td>
-              </tr>
-              <tr className="">
-                <td>Shining Star</td>
-                <td>Earth, Wind, and Fire</td>
-                <td>1975</td>
-              </tr>
-            </tbody>
-          </table>
+          <Table items={jobs} />
         </Constraints>
       </section>
     </main>

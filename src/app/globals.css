@@ -57,7 +57,11 @@ body {
     @apply font-feta;
   }
   .external-link {
-    @apply font-poppins text-palette-lightGrey uppercase hover:underline;
+    @apply font-poppins text-palette-lightGrey uppercase hover:underline hover:text-palette-white;
+  }
+
+  .animation-transition {
+    @apply transition duration-300 ease-in-out;
   }
 }
 
