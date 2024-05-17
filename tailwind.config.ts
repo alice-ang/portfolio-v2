@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         palette: {
+          green: "#9CE73C",
           yellow: "#E7CC3C",
           background: "#1F1F1F",
           darkBackground: "#131214",

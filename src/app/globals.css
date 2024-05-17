@@ -8,14 +8,10 @@ body {
 @layer base {
   body {
     @apply bg-palette-background;
-    @apply overscroll-none;
-    @apply overflow-x-hidden;
   }
   html {
     @apply bg-palette-background;
     @apply text-white;
-    @apply overscroll-none;
-    @apply overflow-x-hidden;
   }
 
   h1 {
@@ -30,6 +26,12 @@ body {
   }
   h4 {
     @apply text-3xl;
+  }
+  h5 {
+    @apply text-2xl;
+  }
+  h6 {
+    @apply text-xl;
   }
   p {
     @apply text-palette-lightGrey;
