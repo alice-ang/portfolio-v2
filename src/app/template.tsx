@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { opacity, expand } from "@/lib/misc";
+import { opacity, expand } from "@/lib/utils";
 
 export default function Template({
   children,

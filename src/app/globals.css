@@ -33,11 +33,21 @@ body {
   }
   p {
     @apply text-palette-lightGrey;
-    @apply text-2xl;
+    @apply text-xl;
     @apply leading-7;
   }
   footer p {
     @apply text-white;
+  }
+
+  table {
+    @apply font-poppins text-palette-lightGrey text-2xl;
+  }
+  table tr {
+    @apply border-t border-palette-lightGrey py-4;
+  }
+  table td {
+    @apply py-4 last:text-right;
   }
 }
 
@@ -46,9 +56,12 @@ body {
     @apply text-8xl md:text-9xl;
     @apply font-feta;
   }
+  .external-link {
+    @apply font-poppins text-palette-lightGrey uppercase hover:underline hover:text-palette-white;
+  }
 
-  .small {
-    
+  .animation-transition {
+    @apply transition duration-300 ease-in-out;
   }
 }
 

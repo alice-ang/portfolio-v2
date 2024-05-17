@@ -1,4 +1,5 @@
-import { Constraints, ScrollingText } from "@/components";
+import { Constraints, ScrollingText, Table } from "@/components";
+import { jobs } from "@/lib/mock";
 import Image from "next/image";
 
 export default function Home() {
@@ -20,7 +21,7 @@ export default function Home() {
                     src={"/alice.png"}
                     alt="Profile picture "
                     fill
-                    className="aspect-[9/16] absolute bottom-0 scale-110 origin-bottom hover:grayscale-0 grayscale transition duration-300 ease-in-out"
+                    className="aspect-[9/16] absolute bottom-0 scale-110 origin-bottom hover:grayscale-0 grayscale animation-transition "
                   />
                 </div>
               </div>
@@ -65,17 +66,32 @@ export default function Home() {
           </Constraints>
         </div>
       </section>
-      <section className="py-24  min-h-screen">
+      <section className="py-24">
         <Constraints>
-          <div className="space-y-2">
-            <h2 className="text-palette-yellow underline">
-              Lorem ipsum dolor sit amet
-            </h2>
-            <p>
-              Quisque finibus felis erat, ut consequat mauris placerat aliquet.
-              ✨
-            </p>
+          <div className="grid grid-cols-12 gap-4 ">
+            <div className="col-span-12 md:col-span-6 xl:col-span-7 space-y-2">
+              <h2 className="text-palette-yellow">Who the f*** is Alice?</h2>
+              <p>
+                I’m a freelance creative developer from Amsterdam, the
+                Netherlands. In 2018 I graduated from the University of Applied
+                Sciences in Amsterdam and got my BaSc in Communication and
+                Multimedia Design. I’ve been freelancing since July 2020, and
+                since 2021 I’ve been a judge at Awwwards.
+                <br />
+                <br />
+                Since 2022 I’ve been teaching parttime at the Associate
+                Degree Frontend Design and Development at the Amsterdam
+                University of Applied Sciences.
+              </p>
+            </div>
+            <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-red-100 aspect-square"></div>
           </div>
+        </Constraints>
+      </section>
+      <section className="py-24">
+        <Constraints>
+          <h3 className="pb-4">Experience</h3>
+          <Table items={jobs} />
         </Constraints>
       </section>
     </main>

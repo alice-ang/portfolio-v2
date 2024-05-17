@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { blur, height, translate } from "./animate";
 import { Constraints } from "../Constraints";
+import { socials } from "@/lib/mock";
 
 const links = [
   {
@@ -93,18 +94,13 @@ export const Nav = () => {
       <div className="w-full">
         <Constraints>
           <ul className="flex flex-row justify-between items-end 0">
-            {["alice@get-flick.app", "linkedin", "githubb"].map(
-              (link, index) => (
-                <li
-                  className="font-poppins text-palette-lightGrey uppercase hover:underline"
-                  key={index * 0.1}
-                >
-                  <Link href={"/"} passHref target="_blank">
-                    {link}
-                  </Link>
-                </li>
-              )
-            )}
+            {socials.map((link, index) => (
+              <li className="external-link" key={index * 0.1}>
+                <Link href={"/"} passHref target="_blank">
+                  {link}
+                </Link>
+              </li>
+            ))}
           </ul>
         </Constraints>
       </div>
