@@ -762,6 +762,11 @@ react-dom@^18:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
+react-hook-mighty-mouse@^1.4.31:
+  version "1.4.31"
+  resolved "https://registry.yarnpkg.com/react-hook-mighty-mouse/-/react-hook-mighty-mouse-1.4.31.tgz#ad351a6add5a70dd7151a4ac9068954732a7106b"
+  integrity sha512-eLldpCv5nBH/j9KkXn/p+fG+p73D0q1mGSTEFF1V+SppgwcMyUeGnuB/I5TePAREeIQ+g0/USMV+2I2EMw8suw==
+
 react@^18:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"

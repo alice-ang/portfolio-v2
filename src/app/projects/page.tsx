@@ -1,5 +1,6 @@
 import { Constraints } from "@/components";
 import Link from "next/link";
+
 export default function About() {
   return (
     <main className="min-h-screen">

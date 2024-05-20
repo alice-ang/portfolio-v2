@@ -30,7 +30,7 @@ export const ScrollingText = ({
   );
 
   return (
-    <div ref={ref} className="flex flex-row justify-center">
+    <div ref={ref} className="flex flex-row justify-center overflow-x-hidden">
       <motion.div style={{ x }} className="flex flex-row space-x-8">
         {Array.from({ length: repeat }).map(() => (
           <>

@@ -27,12 +27,6 @@ body {
   h4 {
     @apply text-3xl;
   }
-  h5 {
-    @apply text-2xl;
-  }
-  h6 {
-    @apply text-xl;
-  }
   p {
     @apply text-palette-lightGrey;
     @apply text-xl;
@@ -50,9 +44,6 @@ body {
   }
   table td {
     @apply py-4 last:text-right;
-  }
-  main {
-    @apply min-h-screen;
   }
 }
 
