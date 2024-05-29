@@ -17,7 +17,7 @@ export default function About() {
     damping: 40,
   });
 
-  const y = useTransform(scaleSpring, [0, 1], ["200%", "-300%"]);
+  const y = useTransform(scaleSpring, [0, 1], ["160%", "-300%"]);
   const showBackButton = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
 
   return (

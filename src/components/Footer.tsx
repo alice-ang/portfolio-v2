@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <footer>
       <Constraints>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 pt-24 pb-4">
           <div className=" col-span-2 md:col-span-1 space-x-4 flex justify-center md:justify-start items-end ">
             {socials.map((link) => (
               <Link

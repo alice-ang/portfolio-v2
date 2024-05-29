@@ -18,6 +18,7 @@ export const jobs = [
     year: "2020 - 2022",
   },
 ];
+
 export const cards = [
   {
     url: "https://alice-ang.vercel.app/_next/image?url=%2Fvan.png&w=3840&q=75",

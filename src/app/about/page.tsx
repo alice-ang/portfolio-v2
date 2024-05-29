@@ -8,20 +8,23 @@ export default function About() {
     <main>
       <section className="py-24">
         <Constraints>
-          <div className="grid grid-cols-12 gap-4 ">
+          <div className="grid grid-cols-12 gap-8 lg:gap-[130px] ">
             <div className="col-span-12 md:col-span-6 xl:col-span-7 space-y-2">
               <h2 className="text-palette-yellow">Who the f*** is Alice?</h2>
               <p>
-                I’m a freelance creative developer from Amsterdam, the
-                Netherlands. In 2018 I graduated from the University of Applied
-                Sciences in Amsterdam and got my BaSc in Communication and
-                Multimedia Design. I’ve been freelancing since July 2020, and
-                since 2021 I’ve been a judge at Awwwards.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                eleifend porta sem, sit amet ultricies nunc vehicula at.
+                Vestibulum urna arcu, suscipit semper nisl ut, imperdiet
+                imperdiet purus. Maecenas accumsan ullamcorper arcu ac finibus.
+                Aenean porttitor, libero quis tempus venenatis, nibh urna
+                tincidunt felis, non condimentum augue lacus vel ligula. Morbi
+                id orci tristique.
                 <br />
                 <br />
-                Since 2022 I’ve been teaching parttime at the Associate
-                Degree Frontend Design and Development at the Amsterdam
-                University of Applied Sciences.
+                Etiam vulputate enim nunc, et aliquet mi ultrices sed. Nunc sit
+                amet urna rutrum, imperdiet tortor lobortis, vestibulum augue.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non
+                interdum purus, sed posuere felis.
               </p>
             </div>
             <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-red-100"></div>
