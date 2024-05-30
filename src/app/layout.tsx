@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { feta, poppins } from "./fonts";
 import { Footer, Header } from "@/components";
+import { QueryProvider } from "@/lib/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Alice A.",
@@ -14,12 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${feta.className} `}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <QueryProvider>
+      <html lang="en">
+        <body className={`${poppins.variable} ${feta.className} `}>
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </QueryProvider>
   );
 }

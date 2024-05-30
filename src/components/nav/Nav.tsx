@@ -95,10 +95,14 @@ export const Nav = () => {
         <Constraints>
           <ul className="flex flex-row justify-between items-end 0">
             {socials.map((link, index) => (
-              <li className="external-link" key={index * 0.1}>
-                <Link href={"/"} passHref target="_blank">
-                  {link}
-                </Link>
+              <li className="external-link" key={link.type}>
+                {link.type === "email" ? (
+                  <a href={link.link}>{link.title}</a>
+                ) : (
+                  <Link href={link.link} passHref target="_blank">
+                    {link.title}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
