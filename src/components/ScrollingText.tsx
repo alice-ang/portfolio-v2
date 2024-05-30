@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 export const ScrollingText = ({
@@ -39,7 +39,7 @@ export const ScrollingText = ({
           <>
             {text.map((item, index) => (
               <h6
-                className="font-poppins underline uppercase whitespace-nowrap	 text-3xl md:text-5xl"
+                className="font-poppins underline uppercase whitespace-nowrap	text-3xl md:text-4xl xl:5xl"
                 key={index}
               >
                 {item}
