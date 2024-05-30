@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <QueryProvider>
       <html lang="en">
-        <body className={`${poppins.variable} ${feta.className} `}>
+        <body className={`${poppins.variable} ${feta.className} pb-12`}>
           <Header />
           {children}
           <Footer />

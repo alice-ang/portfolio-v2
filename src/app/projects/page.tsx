@@ -25,7 +25,7 @@ export default function About() {
             <div className="space-y-4">
               <div className="flex flex-row items-end justify-between">
                 <h2 className="text-palette-yellow">Projects</h2>
-                <div className="flex items-end space-x-6">
+                <div className="flex items-end space-x-2 md:space-x-6">
                   <div className="h-4 w-4 bg-palette-lightGrey rounded-full" />
                   <div className="h-4 w-4 bg-palette-yellow rounded-full" />
                   <div className="h-4 w-4 bg-palette-green rounded-full" />

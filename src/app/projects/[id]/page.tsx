@@ -29,7 +29,7 @@ export default function Project({ params }: { params: { id: string } }) {
   return (
     <div
       ref={targetRef}
-      className="relative h-[400vh]  mx-auto max-w-screen-2xl"
+      className="relative h-[400vh] mx-auto max-w-screen-2xl pt-28"
     >
       <div className="sticky top-0 flex h-screen items-center overflow-hidden flex-col justify-center space-y-4 md:space-y-8 p-4">
         <div
@@ -42,8 +42,8 @@ export default function Project({ params }: { params: { id: string } }) {
         >
           <p className="text-palette-darkBackground">{data.projectStatus}</p>
         </div>
-        <div>
-          <div className="flex gap-2 justify-center">
+        <div className="">
+          <div className="flex gap-2 justify-center flex-wrap">
             {data.stacks.map((stack) => (
               <h6 className="text-center uppercase text-palette-lightGrey">
                 {stack.name}
@@ -85,7 +85,7 @@ export default function Project({ params }: { params: { id: string } }) {
             style={{
               y,
             }}
-            className=" w-full absolute aspect-video space-y-8 md:space-y-12"
+            className=" w-full absolute aspect-video space-y-8 md:space-y-12 "
             whileInView={{ opacity: 1 }}
             initial={{ opacity: 0 }}
           >
