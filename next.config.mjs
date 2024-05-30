@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "alice-ang.vercel.app",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "media.graphassets.com",
+        port: "",
+      },
     ],
   },
 };

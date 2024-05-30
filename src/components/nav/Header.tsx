@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Nav } from "./Nav";
 import { usePathname } from "next/navigation";
 import { background } from "./animate";
-import Link from "next/link";
 import { WeatherObject } from "@/lib/types";
 import Image from "next/image";
 import { Logo } from "../Logo";

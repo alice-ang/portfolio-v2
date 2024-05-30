@@ -95,3 +95,53 @@ interface Temp {
   eve: number;
   morn: number;
 }
+
+enum Tech {
+  EXPO,
+  FRAMER,
+  REACT,
+  NEXTJS,
+  HYGRAPH,
+  TAILWIND,
+  FIREBASE,
+  SUPABASE,
+  TANSTACK_QUERY,
+  REACT_NATIVE,
+  PRISMIC,
+  TYPESCRIPT,
+  FLUTTER,
+  SANITY,
+  STRAPI,
+  FIGMA,
+  GRAPHQL,
+}
+
+export type Stack = {
+  name: string;
+  tech: Tech;
+};
+
+export type Image = {
+  id: string;
+  url: string;
+};
+
+export type ProjectLink = {
+  externalLink: "DEMO" | "GITHUB" | "FIGMA";
+  url: string;
+};
+
+export type Project = {
+  id: string;
+  title: string;
+  images: Image[];
+  description: {
+    markdown: any;
+  };
+  projectStatus: "WIP" | "COMPLETED" | "UNFINISHED" | "ABANDONED";
+  dateOfCreation: string;
+  projectLinks: ProjectLink[];
+  stacks: Stack[];
+};
+
+export type PreviewProject = Pick<Project, "id" | "title" | "images">;

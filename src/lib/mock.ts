@@ -1,4 +1,22 @@
-export const socials = ["alice@get-flick.app", "linkedin", "githubb"];
+import { link } from "fs";
+
+export const socials = [
+  {
+    type: "email",
+    title: "alice@get-flick.app",
+    link: "mailto:alice@get-flick.app",
+  },
+  {
+    type: "linkedin",
+    title: "linkedin",
+    link: "https://www.linkedin.com/in/alice-anglesj%C3%B6-9503121a7/",
+  },
+  {
+    type: "github",
+    title: "github",
+    link: "https://github.com/alice-ang/",
+  },
+];
 export const projectLinks = ["Figma", "Demo", "Github"];
 
 export const jobs = [

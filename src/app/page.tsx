@@ -5,10 +5,23 @@ import {
   ScrollingText,
   Table,
 } from "@/components";
+import { fetchProjects, fetchStack } from "@/lib/api";
 import { jobs } from "@/lib/mock";
+import { PreviewProject, Stack } from "@/lib/types";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 export default function Home() {
+  const { data: stack } = useQuery<Stack[]>({
+    queryKey: ["stacks"],
+    queryFn: fetchStack,
+  });
+
+  const { data: projects } = useQuery<PreviewProject[]>({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+  });
+
   return (
     <main className="flex flex-col justify-between items-stretch min-h-screen">
       <section className="py-24">
@@ -33,35 +46,23 @@ export default function Home() {
               </div>
             </div>
           </Constraints>
-          <div className="space-y-4">
-            <ScrollingText
-              repeat={4}
-              text={[
-                "React native",
-                "GraphQL",
-                "Figma",
-                "NextJs",
-                "Expo",
-                "Hygraph",
-                "React",
-                "Supabase",
-              ]}
-            />
-            <ScrollingText
-              repeat={4}
-              invert
-              text={[
-                "Tailwind",
-                "Tanstack query",
-                "Framer-motion",
-                "Prismic",
-                "Firebase",
-                "Hygraph",
-                "Typescript",
-                "Flutter",
-              ]}
-            />
-          </div>
+
+          {stack && (
+            <div className="space-y-4">
+              <ScrollingText
+                repeat={4}
+                highlightedText={["Next.js", "Tailwind"]}
+                text={stack.map((stack) => stack.name)}
+              />
+              <ScrollingText
+                repeat={4}
+                invert
+                highlightedText={["Next.js", "Tailwind"]}
+                text={stack.map((stack) => stack.name).reverse()}
+              />
+            </div>
+          )}
+
           <Constraints>
             <div className="flex flex-row justify-end">
               <h1 className="text-palette-lightGrey text-right main-title main-title">
@@ -110,9 +111,11 @@ export default function Home() {
         <h3 className="pb-4">Experience</h3>
         <Table items={jobs} />
       </Constraints>
-      <section>
-        <HorizontalScrollCarousel />
-      </section>
+      {projects && (
+        <section>
+          <HorizontalScrollCarousel projects={projects} />
+        </section>
+      )}
     </main>
   );
 }
