@@ -43,27 +43,12 @@ export const HorizontalScrollCarousel = ({
                   placeholder="blur"
                   blurDataURL={project.images[0].url}
                 />
-                <div className="absolute inset-0 w-full h-full bg-black bg-opacity-80 group-hover:bg-opacity-20 animation-transition "></div>
+                <div className="absolute inset-0 w-full h-full bg-black bg-opacity-70 group-hover:bg-opacity-20 animation-transition "></div>
 
                 <h3 className="font-feta absolute group-hover:opacity-0 animation-transition ">
                   {project.title}
                 </h3>
               </Link>
-              // <div
-              //   className="aspect-video min-h-[20vh] md:h-[40vh] flex justify-center items-center relative group "
-              //   style={{
-              //     backgroundImage: `url(${project.images[0].url})`,
-              //     backgroundSize: "cover",
-              //     backgroundPosition: "center",
-              //   }}
-              //   key={project.id}
-              // >
-              //   <div className="absolute inset-0 w-full h-full bg-black bg-opacity-80 group-hover:bg-opacity-20 animation-transition "></div>
-
-              //   <h3 className="absolute group-hover:opacity-0 animation-transition ">
-              //     {project.title}
-              //   </h3>
-              // </div>
             ))}
           </motion.div>
         </div>
