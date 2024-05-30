@@ -27,7 +27,6 @@ export const Header = () => {
         });
         const data: Partial<WeatherObject> = await response.json();
         setLocalWeather(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -36,6 +35,7 @@ export const Header = () => {
       getWeather();
     }
   }, []);
+  // Round a number to the nearest integer with one decimal place (16.57 => 17)
 
   useEffect(() => {
     setOpen(false);
@@ -51,7 +51,7 @@ export const Header = () => {
               {localWeather.current && (
                 <div className="flex space-x-2 items-center">
                   <p className="text-palette-lightGrey text-xs">
-                    {Math.round(localWeather.current?.temp)}°C{" "}
+                    {Math.round(localWeather.current?.temp * 10) / 10}°C{" "}
                     <span className="font-bold text-palette-white">Skövde</span>
                     , Sweden
                   </p>
