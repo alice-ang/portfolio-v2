@@ -27,12 +27,12 @@ export const HorizontalScrollCarousel = ({
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="space-y-8">
           <h2 className="text-palette-yellow underline pl-8">Projects</h2>
-          <motion.div style={{ x }} className="flex gap-16">
+          <motion.div style={{ x }} className="flex gap-6 md:gap-16">
             {projects.map((project) => (
               <Link
                 href={`/projects/${project.id}`}
                 passHref
-                className="aspect-video min-h-[20vh] md:h-[40vh] flex justify-center items-center relative group "
+                className="aspect-video min-h-[30vh] md:h-[40vh] flex justify-center items-center relative group "
                 key={project.id}
               >
                 <Image
@@ -45,7 +45,7 @@ export const HorizontalScrollCarousel = ({
                 />
                 <div className="absolute inset-0 w-full h-full bg-black bg-opacity-70 group-hover:bg-opacity-20 animation-transition "></div>
 
-                <h3 className="font-feta absolute group-hover:opacity-0 animation-transition ">
+                <h3 className="font-feta absolute group-hover:opacity-0 animation-transition text-2xl md:text-4xl text-center">
                   {project.title}
                 </h3>
               </Link>
