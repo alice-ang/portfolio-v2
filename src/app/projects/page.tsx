@@ -45,7 +45,7 @@ export default function About() {
               )}
             </div>
             {projects && (
-              <div className="grid grid-cols-12 gap-4">
+              <div className="grid grid-cols-12 gap-2 md:gap-4">
                 {projects.map((project, i) => (
                   <Link
                     href={`/projects/${project.id}`}
