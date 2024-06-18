@@ -1,11 +1,12 @@
 "use client";
-import Markdown from "react-markdown";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useProjectById } from "@/lib/api";
 import { cn } from "@/lib/utils";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import { FaArrowDown } from "react-icons/fa";
+import Markdown from "react-markdown";
 
 export default function Project({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -21,6 +22,11 @@ export default function Project({ params }: { params: { id: string } }) {
 
   const y = useTransform(scaleSpring, [0, 1], ["160%", "-300%"]);
   const showBackButton = useTransform(scrollYProgress, [0.6, 0.8], [0, 1]);
+  const showScrollIndication = useTransform(
+    scrollYProgress,
+    [0.6, 0.8],
+    [1, 0]
+  );
 
   if (!data) {
     return;
@@ -59,19 +65,31 @@ export default function Project({ params }: { params: { id: string } }) {
         <div className="font-light text-center w-full lg:w-4/5">
           <Markdown>{data.description.markdown}</Markdown>
         </div>
-        <div className="space-x-4 flex justify-center md:justify-start items-end ">
-          {data.projectLinks.map((link) => (
-            <Link
-              href={link.url}
-              passHref
-              target="_blank"
-              key={link.url}
-              className="external-link"
-            >
-              {link.externalLink}
-            </Link>
-          ))}
-        </div>
+        {data.projectLinks && (
+          <div className="space-x-4 flex justify-center md:justify-start items-end ">
+            {data.projectLinks.map((link) => (
+              <Link
+                href={link.url}
+                passHref
+                target="_blank"
+                key={link.url}
+                className="external-link"
+              >
+                <p>{link.externalLink}</p>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        <motion.h4
+          style={{
+            opacity: showScrollIndication,
+          }}
+          className="pl-8 animate-bounce flex gap-4"
+        >
+          Keep going <FaArrowDown />
+        </motion.h4>
+
         <motion.h2
           className="text-palette-yellow hover:underline animation-transition md:animate-bounce"
           onClick={() => router.back()}

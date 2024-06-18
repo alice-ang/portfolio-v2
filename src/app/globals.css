@@ -43,7 +43,7 @@ body {
     @apply border-t border-palette-lightGrey py-4;
   }
   table td {
-    @apply py-4 last:text-right;
+    @apply py-4 last:text-right text-lg;
   }
 }
 
