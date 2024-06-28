@@ -31,7 +31,7 @@ export default function About() {
                   <div className="h-4 w-4 bg-palette-green rounded-full" />
                 </div>
               </div>
-              {stack && (
+              {/* {stack && (
                 <div className="flex items-center flex-wrap gap-4">
                   {stack.map((item, i) => (
                     <button
@@ -42,7 +42,7 @@ export default function About() {
                     </button>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
             {projects && (
               <div className="grid grid-cols-12 gap-2 md:gap-4">

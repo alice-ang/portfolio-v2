@@ -46,7 +46,7 @@ export default function About() {
                 )}
               >
                 {img.link ? (
-                  <Link href={img.link} passHref>
+                  <Link href={img.link} passHref target="_blank">
                     <Image src={img.url} alt={img.alt} fill />
                   </Link>
                 ) : (

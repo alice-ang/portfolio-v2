@@ -102,7 +102,7 @@ export default function Home() {
           </div>
         </Constraints>
       </section>
-      <Constraints>
+      {/* <Constraints>
         <div className="flex justify-between items-center">
           <h3 className="pb-4">Experience</h3>
           <Link
@@ -115,7 +115,7 @@ export default function Home() {
           </Link>
         </div>
         <Table items={jobs} />
-      </Constraints>
+      </Constraints> */}
       {projects && (
         <section>
           <HorizontalScrollCarousel projects={projects} />
