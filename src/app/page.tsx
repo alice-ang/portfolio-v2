@@ -96,7 +96,9 @@ export default function Home() {
                 interdum purus, sed posuere felis.
               </p>
             </div>
-            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100"></div>
+            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 ">
+              <Image src={"/mini-me.png"} alt={"young alice"} fill />
+            </div>
           </div>
         </Constraints>
       </section>

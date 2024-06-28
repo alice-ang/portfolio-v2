@@ -1,7 +1,8 @@
 import { Constraints } from "@/components";
 import { Table } from "@/components/Table";
-import { jobs } from "@/lib/mock";
+import { aboutImages, jobs } from "@/lib/mock";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
@@ -28,20 +29,30 @@ export default function About() {
                 interdum purus, sed posuere felis.
               </p>
             </div>
-            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 "></div>
+            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 ">
+              <Image src={"/mini-me.png"} alt={"young alice"} fill />
+            </div>
           </div>
         </Constraints>
       </section>
       <section className="">
         <Constraints>
           <div className="flex items-center space-x-3 lg:space-x-8 justify-center">
-            {Array.from({ length: 4 }).map((_, i) => (
+            {aboutImages.map((img, i) => (
               <div
                 className={cn(
                   i % 2 ? "-rotate-2" : "rotate-2",
-                  "bg-red-100 aspect-square h-full w-full hover:rotate-0 animation-transition"
+                  "aspect-square h-full w-full hover:rotate-0 animation-transition relative"
                 )}
-              />
+              >
+                {img.link ? (
+                  <Link href={img.link} passHref>
+                    <Image src={img.url} alt={img.alt} fill />
+                  </Link>
+                ) : (
+                  <Image src={img.url} alt={img.alt} fill />
+                )}
+              </div>
             ))}
           </div>
         </Constraints>
