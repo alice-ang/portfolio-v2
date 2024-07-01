@@ -7,11 +7,10 @@ body {
 
 @layer base {
   body {
-    @apply bg-palette-background;
+    @apply bg-palette-background overscroll-none;
   }
   html {
-    @apply bg-palette-background;
-    @apply text-white;
+    @apply bg-palette-background overscroll-none text-white;
   }
 
   h1 {

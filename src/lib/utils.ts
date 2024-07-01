@@ -60,3 +60,5 @@ export const getLocalTime = (dateString: string): string => {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const numOfCols = 8;

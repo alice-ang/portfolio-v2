@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { feta, poppins } from "./fonts";
-import { Footer, Header } from "@/components";
+import { Footer, Header, LineGrid } from "@/components";
 import { QueryProvider } from "@/lib/QueryProvider";
 
 export const metadata: Metadata = {
@@ -17,8 +17,12 @@ export default function RootLayout({
   return (
     <QueryProvider>
       <html lang="en">
-        <body className={`${poppins.variable} ${feta.className} pb-12`}>
+        <body
+          className={`${poppins.variable} ${feta.className}
+           pb-12   `}
+        >
           <Header />
+          <LineGrid />
           {children}
           <Footer />
         </body>

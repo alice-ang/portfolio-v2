@@ -7,3 +7,4 @@ export * from "./Logo";
 export * from "./Footer";
 export * from "./Table";
 export * from "./HorizontalScroll";
+export * from "./LineGrid";

@@ -1,15 +1,13 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { opacity, expand } from "@/lib/utils";
+import { opacity, expand, numOfCols } from "@/lib/utils";
 
 export default function Template({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const numOfCols = 6;
-
   return (
     <motion.div>
       <div className="fixed w-screen h-screen flex top-0 left-0 pointer-events-none	z-10">
