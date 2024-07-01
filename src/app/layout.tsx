@@ -14,11 +14,6 @@ export const metadata: Metadata = {
     siteName: "Alice A.",
     images: [
       {
-        url: "https://alice-ang.vercel.app/og.png",
-        width: 800,
-        height: 600,
-      },
-      {
         url: "https://alice-ang.vercel.app/og-large.png",
         width: 1800,
         height: 1200,
