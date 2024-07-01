@@ -37,12 +37,12 @@ export default function About() {
       </section>
       <section className="">
         <Constraints>
-          <div className="flex items-center space-x-3 lg:space-x-8 justify-center">
+          <div className="flex items-center space-x-3 lg:space-x-8 justify-center overflow-x-scroll">
             {aboutImages.map((img, i) => (
               <div
                 className={cn(
                   i % 2 ? "-rotate-2" : "rotate-2",
-                  "aspect-square h-full w-full hover:rotate-0 animation-transition relative"
+                  "aspect-square h-full w-full min-h-[200px] hover:rotate-0 animation-transition relative"
                 )}
               >
                 {img.link ? (

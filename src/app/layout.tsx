@@ -7,20 +7,17 @@ import { QueryProvider } from "@/lib/QueryProvider";
 export const metadata: Metadata = {
   title: "Alice A.",
   description: "Frontend developer portfolio",
+
   openGraph: {
     title: "Alice A.",
     description: "Frontend developer portfolio",
     url: "https://alice-ang.vercel.app/",
     siteName: "Alice A.",
-    images: [
-      {
-        url: "https://alice-ang.vercel.app/og-large.png",
-        width: 1800,
-        height: 1200,
-      },
-    ],
     locale: "en_US",
     type: "website",
+    images: {
+      url: "https://alice-ang.vercel.app/og-large.png",
+    },
   },
 };
 
