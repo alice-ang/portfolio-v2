@@ -14,19 +14,22 @@ export default function About() {
             <div className="col-span-12 md:col-span-8 space-y-2">
               <h2 className="text-palette-yellow">Who the f*** is Alice?</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                eleifend porta sem, sit amet ultricies nunc vehicula at.
-                Vestibulum urna arcu, suscipit semper nisl ut, imperdiet
-                imperdiet purus. Maecenas accumsan ullamcorper arcu ac finibus.
-                Aenean porttitor, libero quis tempus venenatis, nibh urna
-                tincidunt felis, non condimentum augue lacus vel ligula. Morbi
-                id orci tristique.
+                I am a life-long nerd with a passion for pretty visuals. ✨
+                Thanks to an early interest in gaming I have always had an a
+                thing for tech, but it was not something I thought to pursue as
+                a career until it was time to apply to uni. Before that I
+                studied film & visual design and had dreams of going into the
+                special effects industry. But when I found out I could combine
+                my creative side with tech in the role as frontend developer, I
+                applied to study web development at uni and haven't looked back
+                since!
                 <br />
                 <br />
-                Etiam vulputate enim nunc, et aliquet mi ultrices sed. Nunc sit
-                amet urna rutrum, imperdiet tortor lobortis, vestibulum augue.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non
-                interdum purus, sed posuere felis.
+                I'm looking for roles where I can utilize my skills in areas
+                that are relevant to my interests, passions or values and allow
+                me to make a difference. I love to learn new things and try out
+                new technologies, although React, Next.js and Tailwind will
+                always be my favorite children.
               </p>
             </div>
             <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 ">
