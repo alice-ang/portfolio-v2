@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function About() {
   return (
     <main>
-      <section className="py-24">
+      <section className="">
         <Constraints>
           <div className="grid grid-cols-12 gap-8 2xl:gap-[130px]  ">
             <div className="col-span-12 md:col-span-8 space-y-2">
@@ -60,7 +60,7 @@ export default function About() {
           </div>
         </Constraints>
       </section>
-      <section className="py-24">
+      <section className="">
         <Constraints>
           <div className="flex justify-between items-center">
             <h3 className="pb-4">Experience</h3>

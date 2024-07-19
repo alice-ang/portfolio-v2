@@ -35,9 +35,9 @@ export default function Project({ params }: { params: { id: string } }) {
   return (
     <div
       ref={targetRef}
-      className="relative h-[400vh] mx-auto max-w-screen-2xl pt-28"
+      className="relative h-[400vh] mx-auto max-w-screen-2xl pt-16"
     >
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden flex-col justify-center space-y-4 md:space-y-8 p-4">
+      <div className="sticky top-0 flex h-screen items-center flex-col justify-center space-y-4 md:space-y-8 p-4">
         <div
           className={cn(
             data.projectStatus === "WIP"

@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     <main className="min-h-screen">
-      <section className="py-24">
+      <section className="">
         <Constraints>
           <div className="space-y-16">
             <div className="space-y-4">

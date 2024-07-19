@@ -31,7 +31,7 @@ export default function RootLayout({
       <html lang="en">
         <body
           className={`${poppins.variable} ${feta.className}
-           pb-12   `}
+           pb-12 `}
         >
           <Header />
           <LineGrid />

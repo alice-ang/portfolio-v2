@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col justify-between items-stretch min-h-screen">
-      <section className="py-28">
+      <section className="pt-16">
         <div className="flex flex-col justify-between items-stretch space-y-16">
           <Constraints>
             <div className="grid grid-cols-2 gap-16 w-full">
