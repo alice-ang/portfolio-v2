@@ -1,5 +1,3 @@
-import { link } from "fs";
-
 export const socials = [
   {
     type: "email",
@@ -21,6 +19,11 @@ export const socials = [
 export const projectLinks = ["Figma", "Demo", "Github"];
 
 export const jobs = [
+  {
+    company: "Department of Game Design - Uppsala University",
+    role: "React developer",
+    year: "2024 - 2025 (6 months contract)",
+  },
   {
     company: "FLICK",
     role: "Founder & developer",
