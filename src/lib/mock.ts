@@ -1,8 +1,8 @@
 export const socials = [
   {
     type: "email",
-    title: "alice@get-flick.app",
-    link: "mailto:alice@get-flick.app",
+    title: "aanglesjo@gmail.com",
+    link: "mailto:aanglesjo@gmail.com",
   },
   {
     type: "linkedin",
