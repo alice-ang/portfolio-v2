@@ -24,7 +24,22 @@ export default function About() {
           <div className="space-y-16">
             <div className="space-y-4">
               <div className="flex flex-row items-end justify-between">
-                <h2 className="text-palette-yellow">Projects</h2>
+                <div className="space-y-2 ">
+                  <h2 className="text-palette-yellow">Projects</h2>
+                  <p className="text-palette-lightGrey text-sm">
+                    A selection of side projects. <br />
+                    When I get the itch to start a new project I also like to to
+                    dabble in Figma instead of starting a new coding project.
+                    Check out my{" "}
+                    <Link
+                      href="https://dribbble.com/aaliceelin"
+                      className="underline"
+                    >
+                      dribbble
+                    </Link>{" "}
+                    for some my Figma adventures.
+                  </p>
+                </div>
                 <div className="flex items-end space-x-2 md:space-x-6">
                   <div className="h-4 w-4 bg-palette-lightGrey rounded-full" />
                   <div className="h-4 w-4 bg-palette-yellow rounded-full" />

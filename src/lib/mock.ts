@@ -1,7 +1,7 @@
 export const socials = [
   {
     type: "email",
-    title: "aanglesjo@gmail.com",
+    title: "email",
     link: "mailto:aanglesjo@gmail.com",
   },
   {
@@ -13,6 +13,11 @@ export const socials = [
     type: "github",
     title: "github",
     link: "https://github.com/alice-ang/",
+  },
+  {
+    type: "dribbble",
+    title: "dribbble",
+    link: "https://dribbble.com/aaliceelin",
   },
 ];
 
