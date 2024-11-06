@@ -15,9 +15,9 @@ export const socials = [
     link: "https://github.com/alice-ang/",
   },
   {
-    type: "dribbble",
-    title: "dribbble",
-    link: "https://dribbble.com/aaliceelin",
+    type: "behance",
+    title: "behance",
+    link: "https://www.behance.net/aliceanglesj1",
   },
 ];
 

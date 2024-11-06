@@ -32,12 +32,12 @@ export default function About() {
                     dabble in Figma instead of starting a new coding project.
                     Check out my{" "}
                     <Link
-                      href="https://dribbble.com/aaliceelin"
+                      href="https://www.behance.net/aliceanglesj1"
                       className="underline"
                     >
-                      dribbble
+                      behance
                     </Link>{" "}
-                    for some my Figma adventures.
+                    for some of my Figma adventures.
                   </p>
                 </div>
                 <div className="flex items-end space-x-2 md:space-x-6">
