@@ -25,6 +25,11 @@ export const projectLinks = ["Figma", "Demo", "Github"];
 
 export const jobs = [
   {
+    company: "Minut",
+    role: "React frontend developer",
+    year: "2025 - current",
+  },
+  {
     company: "Department of Game Design - Uppsala University",
     role: "React developer",
     year: "2024 - 2025 (6 months contract)",
