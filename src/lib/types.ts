@@ -131,6 +131,7 @@ export type ProjectLink = {
   url: string;
 };
 
+export type ProjectStatus = "WIP" | "COMPLETED" | "UNFINISHED" | "ABANDONED";
 export type Project = {
   id: string;
   title: string;
@@ -138,10 +139,15 @@ export type Project = {
   description: {
     markdown: any;
   };
-  projectStatus: "WIP" | "COMPLETED" | "UNFINISHED" | "ABANDONED";
+  projectStatus: ProjectStatus;
   dateOfCreation: string;
   projectLinks: ProjectLink[];
   stacks: Stack[];
 };
 
-export type PreviewProject = Pick<Project, "id" | "title" | "images">;
+export type PreviewProject = Pick<
+  Project,
+  "id" | "title" | "images" | "projectStatus"
+> & {
+  stacks?: { id?: string; name: string }[];
+};

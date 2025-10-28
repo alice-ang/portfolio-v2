@@ -1,22 +1,74 @@
 "use client";
-import { Constraints } from "@/components";
+import { Constraints, Tooltip } from "@/components";
 import { fetchProjects, fetchStack } from "@/lib/api";
-import { PreviewProject, Stack } from "@/lib/types";
+import { PreviewProject, ProjectStatus, Stack } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function About() {
-  const { data: stack } = useQuery<Stack[]>({
-    queryKey: ["stacks"],
-    queryFn: fetchStack,
-  });
-
   const { data: projects } = useQuery<PreviewProject[]>({
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
 
+  const { data: stacks } = useQuery<Stack[]>({
+    queryKey: ["stacks"],
+    queryFn: fetchStack,
+  });
+
+  const [activeStatus, setActiveStatus] = useState<ProjectStatus | "ALL">(
+    "ALL"
+  );
+
+  const [activeTags, setActiveTags] = useState<Stack[]>([]);
+
+  const filteredProjects = useMemo(() => {
+    if (!projects) return [];
+    const statusFiltered =
+      activeStatus === "ALL"
+        ? projects
+        : projects.filter((p) => p.projectStatus === activeStatus);
+
+    if (activeTags.length === 0) return statusFiltered;
+
+    const activeTagNames = new Set(activeTags.map((t) => t.name));
+    return statusFiltered.filter((p) =>
+      (p.stacks ?? []).some((s) => activeTagNames.has(s.name))
+    );
+  }, [projects, activeStatus, activeTags]);
+
+  function StatusButton({
+    status,
+    onClick,
+  }: {
+    status: ProjectStatus;
+    onClick: () => void;
+  }) {
+    const bgClassByStatus: Record<ProjectStatus, string> = {
+      UNFINISHED: "bg-palette-lightGrey",
+      WIP: "bg-palette-yellow",
+      COMPLETED: "bg-palette-green",
+      ABANDONED: "bg-palette-red",
+    };
+    const ringClassByStatus: Record<ProjectStatus, string> = {
+      UNFINISHED: "ring-2 ring-palette-lightGrey",
+      WIP: "ring-2 ring-palette-yellow",
+      COMPLETED: "ring-2 ring-palette-green",
+      ABANDONED: "ring-2 ring-palette-red",
+    };
+    return (
+      <button
+        aria-label={`Show ${status} projects`}
+        onClick={onClick}
+        className={`h-4 w-4 rounded-full border border-transparent cursor-pointer ${
+          bgClassByStatus[status]
+        } ${status === activeStatus ? ringClassByStatus[status] : ""}`}
+      />
+    );
+  }
   return (
     <main className="min-h-screen">
       <section className="">
@@ -40,28 +92,73 @@ export default function About() {
                     for some of my Figma adventures.
                   </p>
                 </div>
-                <div className="flex items-end space-x-2 md:space-x-6">
-                  <div className="h-4 w-4 bg-palette-lightGrey rounded-full" />
-                  <div className="h-4 w-4 bg-palette-yellow rounded-full" />
-                  <div className="h-4 w-4 bg-palette-green rounded-full" />
+                <div className="flex items-end space-x-2 md:space-x-4">
+                  <Tooltip label="Unfinished">
+                    <StatusButton
+                      status="UNFINISHED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "UNFINISHED" ? "ALL" : "UNFINISHED"
+                        )
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Work in progress">
+                    <StatusButton
+                      status="WIP"
+                      onClick={() =>
+                        setActiveStatus(activeStatus === "WIP" ? "ALL" : "WIP")
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Completed">
+                    <StatusButton
+                      status="COMPLETED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "COMPLETED" ? "ALL" : "COMPLETED"
+                        )
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Abandoned">
+                    <StatusButton
+                      status="ABANDONED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "ABANDONED" ? "ALL" : "ABANDONED"
+                        )
+                      }
+                    />
+                  </Tooltip>
                 </div>
               </div>
-              {/* {stack && (
-                <div className="flex items-center flex-wrap gap-4">
-                  {stack.map((item, i) => (
-                    <button
-                      key={i}
-                      className="py-1 px-6 border border-palette-lightGrey rounded-full text-base font-poppins"
-                    >
-                      {item.name}
-                    </button>
-                  ))}
-                </div>
-              )} */}
+              <div className="flex gap-2 flex-wrap">
+                {stacks?.map((stack, i) => (
+                  <button
+                    key={i}
+                    className={cn(
+                      "px-4 py-1 rounded-full w-fit border border-palette-yellow animation-transition hover:bg-palette-yellow hover:text-palette-background",
+                      activeTags.includes(stack)
+                        ? "bg-palette-yellow text-palette-background"
+                        : "bg-transparent text-palette-white"
+                    )}
+                    onClick={() =>
+                      setActiveTags(
+                        activeTags.includes(stack)
+                          ? activeTags.filter((t) => t !== stack)
+                          : [...activeTags, stack]
+                      )
+                    }
+                  >
+                    {stack.name}
+                  </button>
+                ))}
+              </div>
             </div>
-            {projects && (
+            {filteredProjects && (
               <div className="grid grid-cols-12 gap-2 md:gap-4">
-                {projects.map((project, i) => (
+                {filteredProjects.map((project, i) => (
                   <Link
                     href={`/projects/${project.id}`}
                     passHref
