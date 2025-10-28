@@ -1,22 +1,57 @@
 "use client";
-import { Constraints } from "@/components";
+import { Constraints, Tooltip } from "@/components";
 import { fetchProjects, fetchStack } from "@/lib/api";
-import { PreviewProject, Stack } from "@/lib/types";
+import { PreviewProject, ProjectStatus, Stack } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function About() {
-  const { data: stack } = useQuery<Stack[]>({
-    queryKey: ["stacks"],
-    queryFn: fetchStack,
-  });
-
   const { data: projects } = useQuery<PreviewProject[]>({
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
 
+  const [activeStatus, setActiveStatus] = useState<ProjectStatus | "ALL">(
+    "ALL"
+  );
+
+  const filteredProjects = useMemo(() => {
+    if (!projects) return [];
+    if (activeStatus === "ALL") return projects;
+    return projects.filter((p) => p.projectStatus === activeStatus);
+  }, [projects, activeStatus]);
+
+  function StatusButton({
+    status,
+    onClick,
+  }: {
+    status: ProjectStatus;
+    onClick: () => void;
+  }) {
+    const bgClassByStatus: Record<ProjectStatus, string> = {
+      UNFINISHED: "bg-palette-lightGrey",
+      WIP: "bg-palette-yellow",
+      COMPLETED: "bg-palette-green",
+      ABANDONED: "bg-palette-red",
+    };
+    const ringClassByStatus: Record<ProjectStatus, string> = {
+      UNFINISHED: "ring-2 ring-palette-lightGrey",
+      WIP: "ring-2 ring-palette-yellow",
+      COMPLETED: "ring-2 ring-palette-green",
+      ABANDONED: "ring-2 ring-palette-red",
+    };
+    return (
+      <button
+        aria-label={`Show ${status} projects`}
+        onClick={onClick}
+        className={`h-4 w-4 rounded-full border border-transparent cursor-pointer ${
+          bgClassByStatus[status]
+        } ${status === activeStatus ? ringClassByStatus[status] : ""}`}
+      />
+    );
+  }
   return (
     <main className="min-h-screen">
       <section className="">
@@ -41,9 +76,44 @@ export default function About() {
                   </p>
                 </div>
                 <div className="flex items-end space-x-2 md:space-x-6">
-                  <div className="h-4 w-4 bg-palette-lightGrey rounded-full" />
-                  <div className="h-4 w-4 bg-palette-yellow rounded-full" />
-                  <div className="h-4 w-4 bg-palette-green rounded-full" />
+                  <Tooltip label="Unfinished">
+                    <StatusButton
+                      status="UNFINISHED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "UNFINISHED" ? "ALL" : "UNFINISHED"
+                        )
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Work in progress">
+                    <StatusButton
+                      status="WIP"
+                      onClick={() =>
+                        setActiveStatus(activeStatus === "WIP" ? "ALL" : "WIP")
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Completed">
+                    <StatusButton
+                      status="COMPLETED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "COMPLETED" ? "ALL" : "COMPLETED"
+                        )
+                      }
+                    />
+                  </Tooltip>
+                  <Tooltip label="Abandoned">
+                    <StatusButton
+                      status="ABANDONED"
+                      onClick={() =>
+                        setActiveStatus(
+                          activeStatus === "ABANDONED" ? "ALL" : "ABANDONED"
+                        )
+                      }
+                    />
+                  </Tooltip>
                 </div>
               </div>
               {/* {stack && (
@@ -59,9 +129,9 @@ export default function About() {
                 </div>
               )} */}
             </div>
-            {projects && (
+            {filteredProjects && (
               <div className="grid grid-cols-12 gap-2 md:gap-4">
-                {projects.map((project, i) => (
+                {filteredProjects.map((project, i) => (
                   <Link
                     href={`/projects/${project.id}`}
                     passHref
