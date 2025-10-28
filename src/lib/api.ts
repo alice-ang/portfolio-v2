@@ -36,6 +36,10 @@ export const fetchProjects = async () => {
           id
           title
           projectStatus
+          stacks {
+            id
+            name
+          }
           images {
             url
             id

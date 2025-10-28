@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default function About() {
   const { data: projects } = useQuery<PreviewProject[]>({
@@ -13,15 +14,31 @@ export default function About() {
     queryFn: fetchProjects,
   });
 
+  const { data: stacks } = useQuery<Stack[]>({
+    queryKey: ["stacks"],
+    queryFn: fetchStack,
+  });
+
   const [activeStatus, setActiveStatus] = useState<ProjectStatus | "ALL">(
     "ALL"
   );
 
+  const [activeTags, setActiveTags] = useState<Stack[]>([]);
+
   const filteredProjects = useMemo(() => {
     if (!projects) return [];
-    if (activeStatus === "ALL") return projects;
-    return projects.filter((p) => p.projectStatus === activeStatus);
-  }, [projects, activeStatus]);
+    const statusFiltered =
+      activeStatus === "ALL"
+        ? projects
+        : projects.filter((p) => p.projectStatus === activeStatus);
+
+    if (activeTags.length === 0) return statusFiltered;
+
+    const activeTagNames = new Set(activeTags.map((t) => t.name));
+    return statusFiltered.filter((p) =>
+      (p.stacks ?? []).some((s) => activeTagNames.has(s.name))
+    );
+  }, [projects, activeStatus, activeTags]);
 
   function StatusButton({
     status,
@@ -75,7 +92,7 @@ export default function About() {
                     for some of my Figma adventures.
                   </p>
                 </div>
-                <div className="flex items-end space-x-2 md:space-x-6">
+                <div className="flex items-end space-x-2 md:space-x-4">
                   <Tooltip label="Unfinished">
                     <StatusButton
                       status="UNFINISHED"
@@ -116,18 +133,28 @@ export default function About() {
                   </Tooltip>
                 </div>
               </div>
-              {/* {stack && (
-                <div className="flex items-center flex-wrap gap-4">
-                  {stack.map((item, i) => (
-                    <button
-                      key={i}
-                      className="py-1 px-6 border border-palette-lightGrey rounded-full text-base font-poppins"
-                    >
-                      {item.name}
-                    </button>
-                  ))}
-                </div>
-              )} */}
+              <div className="flex gap-2">
+                {stacks?.map((stack, i) => (
+                  <button
+                    key={i}
+                    className={cn(
+                      "px-4 py-1 rounded-full w-fit border border-palette-yellow animation-transition hover:bg-palette-yellow hover:text-palette-background",
+                      activeTags.includes(stack)
+                        ? "bg-palette-yellow text-palette-background"
+                        : "bg-transparent text-palette-white"
+                    )}
+                    onClick={() =>
+                      setActiveTags(
+                        activeTags.includes(stack)
+                          ? activeTags.filter((t) => t !== stack)
+                          : [...activeTags, stack]
+                      )
+                    }
+                  >
+                    {stack.name}
+                  </button>
+                ))}
+              </div>
             </div>
             {filteredProjects && (
               <div className="grid grid-cols-12 gap-2 md:gap-4">

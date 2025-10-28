@@ -148,4 +148,6 @@ export type Project = {
 export type PreviewProject = Pick<
   Project,
   "id" | "title" | "images" | "projectStatus"
->;
+> & {
+  stacks?: { id?: string; name: string }[];
+};
