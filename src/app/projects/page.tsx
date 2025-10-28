@@ -133,7 +133,7 @@ export default function About() {
                   </Tooltip>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-wrap">
                 {stacks?.map((stack, i) => (
                   <button
                     key={i}
