@@ -27,7 +27,7 @@ export const jobs = [
   {
     company: "Minut",
     role: "React frontend developer",
-    year: "2025 - current",
+    year: "2025 - 2026",
   },
   {
     company: "Department of Game Design - Uppsala University",
@@ -37,7 +37,7 @@ export const jobs = [
   {
     company: "FLICK",
     role: "Founder & developer",
-    year: "2023 - ",
+    year: "2023 - 2025",
   },
   {
     company: "Petli",
