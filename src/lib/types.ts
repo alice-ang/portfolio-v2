@@ -157,7 +157,7 @@ export type ProjectLink = {
   url: string;
 };
 
-export type ProjectStatus = "WIP" | "COMPLETED" | "UNFINISHED" | "ABANDONED";
+export type ProjectStatus = "WIP" | "COMPLETED" | "ABANDONED";
 export type Project = {
   id: string;
   title: string;

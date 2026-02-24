@@ -25,7 +25,6 @@ export const Projects: CollectionConfig = {
       options: [
         { label: 'Work in Progress', value: 'WIP' },
         { label: 'Completed', value: 'COMPLETED' },
-        { label: 'Unfinished', value: 'UNFINISHED' },
         { label: 'Abandoned', value: 'ABANDONED' },
       ],
     },
