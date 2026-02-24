@@ -9,8 +9,29 @@ import { Constraints } from "./Constraints";
 export const JobsTable: FC = () => {
   const { data, isLoading } = useExperience();
 
+  if(isLoading) {
+    return (
+      <div className="grid gap-4 p-4">
+        <div className="flex justify-between items-center h-8">
+        <div className="h-8 w-64 animate-pulse bg-palette-lightGrey rounded"/>
+        <div className="h-8 w-16 animate-pulse bg-palette-lightGrey rounded"/>
+
+        </div>
+        <div className="gap-4 grid grid-cols-1">
+        {Array.from({length: 4}).map(() => (
+          <div className="grid grid-cols-3 gap-4 col-span-1">
+          {Array.from({length:3}).map(() => (
+            <div className="h-8 animate-pulse bg-palette-lightGrey rounded"/>
+          ))}
+      </div>
+        ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <section className="">
+    <section >
       <Constraints>
         <div className="flex justify-between items-center">
           <h3 className="pb-4">Experience</h3>
@@ -18,23 +39,7 @@ export const JobsTable: FC = () => {
             Download cv
           </Link>
         </div>
-        {isLoading ? (
-          <table className="table-auto w-full">
-            <tbody>
-              {Array.from({ length: 4 }).map((_, i) => (
-                <tr key={i}>
-                  {Array.from({ length: 3 }).map((_, j) => (
-                    <td key={j} className="py-1 pr-4">
-                      <div className="h-4 rounded bg-muted animate-pulse" />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
           <Table items={data ?? []} />
-        )}
       </Constraints>
     </section>
   );
