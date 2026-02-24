@@ -1,4 +1,5 @@
 import { AboutSection, Constraints } from "@/components";
+import { JobsTable } from "@/components/JobsTable";
 import { Table } from "@/components/Table";
 import { fetchAbout } from "@/lib/api";
 import { cn } from "@/lib/utils";
@@ -8,6 +9,8 @@ import Link from "next/link";
 export default async function About() {
   const about = await fetchAbout();
 
+
+  
   return (
     <main>
       <AboutSection />
@@ -36,21 +39,7 @@ export default async function About() {
           </Constraints>
         </section>
       )}
-      <section className="">
-        <Constraints>
-          <div className="flex justify-between items-center">
-            <h3 className="pb-4">Experience</h3>
-            <Link
-              href="/CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download cv
-            </Link>
-          </div>
-          <Table items={about.experience} />
-        </Constraints>
-      </section>
+      <JobsTable/>
     </main>
   );
 }
