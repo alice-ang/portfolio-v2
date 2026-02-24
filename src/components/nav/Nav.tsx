@@ -69,7 +69,7 @@ export const Nav = () => {
     >
       <motion.div className="flex flex-col justify-center items-center text-left flex-1">
         {links.map((link, index) => (
-          <Link href={link.href} passHref className="main-title ">
+          <Link href={link.href} passHref className="main-title " key={link.title}>
             <motion.p
               className="flex main-title text-palette-white overflow-hidden "
               key={link.title}

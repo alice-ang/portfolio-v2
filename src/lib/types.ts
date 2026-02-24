@@ -96,10 +96,55 @@ interface Temp {
   morn: number;
 }
 
+export type AboutExperience = {
+  company: string;
+  role: string;
+  year: string;
+};
+
+export type AboutImage = {
+  image: { id: string; url: string; alt: string };
+  link?: string;
+};
+
+export type AboutData = {
+  heading: string;
+  bio: Record<string, unknown> | null;
+  images: AboutImage[];
+  experience: AboutExperience[];
+};
+
 export type Stack = {
   id?: string;
   name: string;
-  tech: string;
+  tech: string[];
+};
+
+export const TECH_LABELS: Record<string, string> = {
+  EXPO: 'Expo',
+  FRAMER: 'Framer',
+  REACT: 'React',
+  NEXTJS: 'Next.js',
+  TAILWIND: 'Tailwind CSS',
+  FIREBASE: 'Firebase',
+  SUPABASE: 'Supabase',
+  TANSTACK_QUERY: 'TanStack Query',
+  REACT_NATIVE: 'React Native',
+  PRISMIC: 'Prismic',
+  TYPESCRIPT: 'TypeScript',
+  FLUTTER: 'Flutter',
+  SANITY: 'Sanity',
+  STRAPI: 'Strapi',
+  FIGMA: 'Figma',
+  GRAPHQL: 'GraphQL',
+  PAYLOAD: 'Payload',
+  HYGRAPH: 'Hygraph',
+  CLERK: 'Clerk',
+  SHADCN: 'shadcn/ui',
+  STORYBLOK: 'Storyblok',
+  SQLITE: 'SQLite',
+  DRIZZLE: 'Drizzle',
+  NEON: 'Neon DB',
 };
 
 export type Image = {

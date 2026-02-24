@@ -1,7 +1,29 @@
-import { PreviewProject, Project, Stack } from "./types";
+import { AboutData, PreviewProject, Project, Stack } from "./types";
 import { useQuery } from "@tanstack/react-query";
 
 const BASE_URL = process.env.NEXT_PUBLIC_PAYLOAD_API_URL ?? "http://localhost:3000";
+
+export const fetchAbout = async (): Promise<AboutData> => {
+  const res = await fetch(`${BASE_URL}/api/globals/about?depth=1`);
+  const data = await res.json();
+  return {
+    heading: data.heading ?? "",
+    bio: data.bio ?? null,
+    images: (data.images ?? []).map((item: any) => ({
+      image: {
+        id: String(item.image?.id ?? ""),
+        url: item.image?.url ?? "",
+        alt: item.image?.alt ?? "",
+      },
+      link: item.link || undefined,
+    })),
+    experience: (data.experience ?? []).map((e: any) => ({
+      company: e.company,
+      role: e.role,
+      year: e.year,
+    })),
+  };
+};
 
 export const fetchStack = async (): Promise<Stack[]> => {
   const res = await fetch(`${BASE_URL}/api/stacks?limit=100`);

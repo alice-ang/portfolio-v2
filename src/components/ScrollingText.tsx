@@ -36,10 +36,11 @@ export const ScrollingText = ({
       ref={ref}
       className="flex flex-row justify-center overflow-hidden h-full"
     >
-      <motion.div style={{ x }} className="flex flex-row space-x-8">
-        {Array.from({ length: repeat }).map(() => (
-          <div>
-            {text.map((item, index) => (
+      <motion.div style={{ x }}  className="flex flex-row space-x-8">
+        {Array.from({ length: repeat }).map((_, i) => (
+          <div  className="flex flex-row space-x-8" key={i}>
+  
+         {text.map((item, index) => (
               <h6
                 className={cn(
                   highlightedText && highlightedText.includes(item)
