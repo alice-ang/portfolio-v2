@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { feta, poppins } from "./fonts";
+import "../globals.css";
+import { feta, poppins } from "../fonts";
 import { Footer, Header, LineGrid } from "@/components";
 import { QueryProvider } from "@/lib/QueryProvider";
 
