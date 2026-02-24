@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import { FaArrowDown } from "react-icons/fa";
-import Markdown from "react-markdown";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 export default function Project() {
   const router = useRouter();
@@ -64,7 +64,7 @@ export default function Project() {
         </div>
 
         <div className="font-light text-center w-full lg:w-4/5">
-          <Markdown>{data.description}</Markdown>
+          {data.description && <RichText data={data.description} />}
         </div>
         {data.projectLinks && (
           <div className="space-x-4 flex justify-center md:justify-start items-end ">

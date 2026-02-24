@@ -38,7 +38,7 @@ export const useProjectById = (id: string) => {
       return {
         id: String(doc.id),
         title: doc.title,
-        description: doc.description ?? "",
+        description: doc.description ?? null,
         projectStatus: doc.projectStatus,
         dateOfCreation: doc.dateOfCreation,
         projectLinks: doc.projectLinks ?? [],

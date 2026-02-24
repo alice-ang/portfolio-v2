@@ -117,7 +117,7 @@ export type Project = {
   id: string;
   title: string;
   images: Image[];
-  description: string;
+  description: Record<string, unknown> | null;
   projectStatus: ProjectStatus;
   dateOfCreation: string;
   projectLinks: ProjectLink[];
