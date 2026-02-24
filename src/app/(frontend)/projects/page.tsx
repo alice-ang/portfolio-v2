@@ -48,13 +48,11 @@ export default function About() {
     onClick: () => void;
   }) {
     const bgClassByStatus: Record<ProjectStatus, string> = {
-      UNFINISHED: "bg-palette-lightGrey",
       WIP: "bg-palette-yellow",
       COMPLETED: "bg-palette-green",
       ABANDONED: "bg-palette-red",
     };
     const ringClassByStatus: Record<ProjectStatus, string> = {
-      UNFINISHED: "ring-2 ring-palette-lightGrey",
       WIP: "ring-2 ring-palette-yellow",
       COMPLETED: "ring-2 ring-palette-green",
       ABANDONED: "ring-2 ring-palette-red",
@@ -93,16 +91,7 @@ export default function About() {
                   </p>
                 </div>
                 <div className="flex items-end space-x-2 md:space-x-4">
-                  <Tooltip label="Unfinished">
-                    <StatusButton
-                      status="UNFINISHED"
-                      onClick={() =>
-                        setActiveStatus(
-                          activeStatus === "UNFINISHED" ? "ALL" : "UNFINISHED"
-                        )
-                      }
-                    />
-                  </Tooltip>
+
                   <Tooltip label="Work in progress">
                     <StatusButton
                       status="WIP"
