@@ -64,7 +64,7 @@ export default function Project() {
         </div>
 
         <div className="font-light text-center w-full lg:w-4/5">
-          {data.description && <RichText data={data.description} />}
+          {data.description && <RichText data={data.description as any} />}
         </div>
         {data.projectLinks && (
           <div className="space-x-4 flex justify-center md:justify-start items-end ">
