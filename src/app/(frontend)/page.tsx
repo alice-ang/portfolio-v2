@@ -5,23 +5,23 @@ import {
   ScrollingText,
   Table,
 } from "@/components";
-import { fetchProjects, fetchStack } from "@/lib/api";
+import { fetchProjects } from "@/lib/api";
 import { jobs } from "@/lib/mock";
-import { PreviewProject, Stack } from "@/lib/types";
+import { PreviewProject, TECH_LABELS } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const { data: stack } = useQuery<Stack[]>({
-    queryKey: ["stacks"],
-    queryFn: fetchStack,
-  });
+  const techLabels = Object.values(TECH_LABELS);
 
   const { data: projects } = useQuery<PreviewProject[]>({
     queryKey: ["projects"],
     queryFn: fetchProjects,
   });
+
+
+console.log(techLabels)
 
   return (
     <main className="flex flex-col justify-between items-stretch min-h-screen">
@@ -48,21 +48,19 @@ export default function Home() {
             </div>
           </Constraints>
 
-          {stack && (
-            <div className="space-y-4">
+          <div className="space-y-4">
               <ScrollingText
                 repeat={4}
-                highlightedText={["Next.js", "Tailwind"]}
-                text={stack.map((stack) => stack.name)}
+                highlightedText={["Next.js", "Tailwind CSS"]}
+                text={techLabels.map((label) => label)}
               />
               <ScrollingText
                 repeat={4}
                 invert
-                highlightedText={["Next.js", "Tailwind"]}
-                text={stack.map((stack) => stack.name).reverse()}
+                highlightedText={["Next.js", "Tailwind CSS"]}
+                text={techLabels.map((label) => label).reverse()}
               />
             </div>
-          )}
 
           <Constraints>
             <div className="flex flex-row justify-end">

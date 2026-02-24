@@ -14,6 +14,7 @@ export const Stacks: CollectionConfig = {
     {
       name: 'tech',
       type: 'select',
+      hasMany: true,
       required: true,
       options: [
         { label: 'Expo', value: 'EXPO' },
@@ -37,6 +38,9 @@ export const Stacks: CollectionConfig = {
         { label: 'Clerk', value: 'CLERK' },
         { label: 'shadcn/ui', value: 'SHADCN' },
         { label: 'Storyblok', value: 'STORYBLOK' },
+        { label: 'SQLite', value: 'SQLITE' },
+        { label: 'Drizzle', value: 'DRIZZLE' },
+        { label: 'Neon DB', value: 'NEON' },
       ],
     },
   ],

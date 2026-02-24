@@ -117,7 +117,34 @@ export type AboutData = {
 export type Stack = {
   id?: string;
   name: string;
-  tech: string;
+  tech: string[];
+};
+
+export const TECH_LABELS: Record<string, string> = {
+  EXPO: 'Expo',
+  FRAMER: 'Framer',
+  REACT: 'React',
+  NEXTJS: 'Next.js',
+  TAILWIND: 'Tailwind CSS',
+  FIREBASE: 'Firebase',
+  SUPABASE: 'Supabase',
+  TANSTACK_QUERY: 'TanStack Query',
+  REACT_NATIVE: 'React Native',
+  PRISMIC: 'Prismic',
+  TYPESCRIPT: 'TypeScript',
+  FLUTTER: 'Flutter',
+  SANITY: 'Sanity',
+  STRAPI: 'Strapi',
+  FIGMA: 'Figma',
+  GRAPHQL: 'GraphQL',
+  PAYLOAD: 'Payload',
+  HYGRAPH: 'Hygraph',
+  CLERK: 'Clerk',
+  SHADCN: 'shadcn/ui',
+  STORYBLOK: 'Storyblok',
+  SQLITE: 'SQLite',
+  DRIZZLE: 'Drizzle',
+  NEON: 'Neon DB',
 };
 
 export type Image = {

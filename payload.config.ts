@@ -17,6 +17,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL as string,
     },
+    push: true,
   }),
   editor: lexicalEditor({}),
   collections: [Media, Projects, Stacks],
