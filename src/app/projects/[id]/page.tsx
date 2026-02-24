@@ -3,18 +3,19 @@ import { useProjectById } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import Markdown from "react-markdown";
 
-export default function Project({ params }: { params: { id: string } }) {
+export default function Project() {
   const router = useRouter();
+  const { id } = useParams<{ id: string }>();
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
-  const { data } = useProjectById(params.id);
+  const { data } = useProjectById(id);
   const scaleSpring = useSpring(scrollYProgress, {
     stiffness: 200,
     damping: 40,
@@ -63,7 +64,7 @@ export default function Project({ params }: { params: { id: string } }) {
         </div>
 
         <div className="font-light text-center w-full lg:w-4/5">
-          <Markdown>{data.description.markdown}</Markdown>
+          <Markdown>{data.description}</Markdown>
         </div>
         {data.projectLinks && (
           <div className="space-x-4 flex justify-center md:justify-start items-end ">

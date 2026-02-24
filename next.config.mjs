@@ -1,3 +1,5 @@
+import { withPayload } from '@payloadcms/next/withPayload'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -13,17 +15,17 @@ const nextConfig = {
         port: "",
       },
       {
-        protocol: "https",
-        hostname: "media.graphassets.com",
+        protocol: "http",
+        hostname: "localhost",
         port: "",
       },
       {
         protocol: "https",
-        hostname: "eu-west-2.graphassets.com",
+        hostname: "*.public.blob.vercel-storage.com",
         port: "",
       },
     ],
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig)
