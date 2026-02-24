@@ -1,5 +1,6 @@
 "use client";
 import {
+  AboutSection,
   Constraints,
   HorizontalScrollCarousel,
   ScrollingText,
@@ -12,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default  function Home() {
   const techLabels = Object.values(TECH_LABELS);
 
   const { data: projects } = useQuery<PreviewProject[]>({
@@ -20,8 +21,6 @@ export default function Home() {
     queryFn: fetchProjects,
   });
 
-
-console.log(techLabels)
 
   return (
     <main className="flex flex-col justify-between items-stretch min-h-screen">
@@ -73,36 +72,7 @@ console.log(techLabels)
         </div>
       </section>
 
-      <section className="">
-        <Constraints>
-          <div className="grid grid-cols-12 gap-8 2xl:gap-[130px]  ">
-            <div className="col-span-12 md:col-span-8 space-y-2">
-              <h2 className="text-palette-yellow">Who the f*** is Alice?</h2>
-              <p>
-                I am a life-long nerd with a passion for pretty visuals. ✨
-                Thanks to an early interest in gaming I have always had an a
-                thing for tech, but it was not something I thought to pursue as
-                a career until it was time to apply to uni. Before that I
-                studied film & visual design and had dreams of going into the
-                special effects industry. But when I found out I could combine
-                my creative side with tech in the role as frontend developer, I
-                applied to study web development at uni and haven't looked back
-                since!
-                <br />
-                <br />
-                I'm looking for roles where I can utilize my skills in areas
-                that are relevant to my interests, passions or values and allow
-                me to make a difference. I love to learn new things and try out
-                new technologies, although React, Next.js and Tailwind will
-                always be my favorite children.
-              </p>
-            </div>
-            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 ">
-              <Image src={"/mini-me.png"} alt={"young alice"} fill />
-            </div>
-          </div>
-        </Constraints>
-      </section>
+      <AboutSection />
       <Constraints>
         <div className="flex justify-between items-center">
           <h3 className="pb-4">Experience</h3>

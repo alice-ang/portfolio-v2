@@ -1,9 +1,7 @@
-import { Constraints } from "@/components";
+import { AboutSection, Constraints } from "@/components";
 import { Table } from "@/components/Table";
 import { fetchAbout } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import { RichText } from "@payloadcms/richtext-lexical/react";
-import type { SerializedEditorState } from "lexical";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,26 +10,7 @@ export default async function About() {
 
   return (
     <main>
-      <section className="">
-        <Constraints>
-          <div className="grid grid-cols-12 gap-8 2xl:gap-[130px]  ">
-            <div className="col-span-12 md:col-span-8 space-y-2">
-              {about.heading && (
-                <h2 className="text-palette-yellow">{about.heading}</h2>
-              )}
-              {about.bio && (
-                <RichText
-                  data={about.bio as unknown as SerializedEditorState}
-                  disableContainer
-                />
-              )}
-            </div>
-            <div className="col-span-12 md:col-span-4 relative aspect-square bg-red-100 ">
-              <Image src={"/mini-me.png"} alt={"young alice"} fill />
-            </div>
-          </div>
-        </Constraints>
-      </section>
+      <AboutSection />
       {about.images.length > 0 && (
         <section className="">
           <Constraints>
@@ -63,7 +42,6 @@ export default async function About() {
             <h3 className="pb-4">Experience</h3>
             <Link
               href="/CV.pdf"
-              locale={false}
               target="_blank"
               rel="noopener noreferrer"
             >

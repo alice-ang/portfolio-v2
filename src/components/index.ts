@@ -1,3 +1,4 @@
+export * from "./AboutSection";
 export * from "./Constraints";
 export * from "./TextTyping";
 export * from "./nav";
