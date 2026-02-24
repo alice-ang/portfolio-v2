@@ -1,6 +1,7 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { Media } from './src/collections/Media'
 import { Projects } from './src/collections/Projects'
 import { Stacks } from './src/collections/Stacks'
@@ -20,6 +21,15 @@ export default buildConfig({
     push: true,
   }),
   editor: lexicalEditor({}),
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN as string,
+    }),
+  ],
   collections: [Media, Projects, Stacks],
   globals: [About],
   typescript: {
