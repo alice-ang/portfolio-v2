@@ -4,23 +4,31 @@ import { useQuery } from "@tanstack/react-query";
 const BASE_URL = process.env.NEXT_PUBLIC_PAYLOAD_API_URL ?? "http://localhost:3000";
 
 export const fetchAbout = async (): Promise<AboutData> => {
-  const res = await fetch(`${BASE_URL}/api/globals/about?depth=1`);
+  const res = await fetch(
+    `${BASE_URL}/api/pages?where[slug][equals]=about&depth=1&limit=1`
+  );
   const data = await res.json();
+  const doc = data.docs?.[0];
+
+  if (!doc) {
+    return { heading: '', bio: null, images: [], experience: [] };
+  }
+
   return {
-    heading: data.heading ?? "",
-    bio: data.bio ?? null,
-    images: (data.images ?? []).map((item: any) => ({
+    heading: doc.heading ?? '',
+    bio: doc.bio ?? null,
+    images: (doc.images ?? []).map((item: any) => ({
       image: {
-        id: String(item.image?.id ?? ""),
-        url: item.image?.url ?? "",
-        alt: item.image?.alt ?? "",
+        id: String(item.image?.id ?? ''),
+        url: item.image?.url ?? '',
+        alt: item.image?.alt ?? '',
       },
       link: item.link || undefined,
     })),
-    experience: (data.experience ?? []).map((e: any) => ({
-      company: e.company,
-      role: e.role,
-      year: e.year,
+    experience: (doc.experience ?? []).map((e: any) => ({
+      company: e.company ?? '',
+      role: e.role ?? '',
+      year: e.year ?? '',
     })),
   };
 };
