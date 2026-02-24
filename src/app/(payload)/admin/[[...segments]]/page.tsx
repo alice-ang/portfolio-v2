@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { RootPage, generatePageMetadata } from '@payloadcms/next/views'
 import { importMap } from '../importMap'
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+import config from '@payload-config'
 
 type Args = {
   params: Promise<{
@@ -13,9 +15,9 @@ type Args = {
 
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  generatePageMetadata({ config: import('@payload-config') as any, params, searchParams })
+  generatePageMetadata({ config: config as any, params, searchParams })
 
 export default function Page({ params, searchParams }: Args) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return RootPage({ config: import('@payload-config') as any, importMap, params, searchParams })
+  return RootPage({ config: config as any, importMap, params, searchParams })
 }
