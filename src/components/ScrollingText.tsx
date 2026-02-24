@@ -37,8 +37,8 @@ export const ScrollingText = ({
       className="flex flex-row justify-center overflow-hidden h-full"
     >
       <motion.div style={{ x }} className="flex flex-row space-x-8">
-        {Array.from({ length: repeat }).map(() => (
-          <div>
+        {Array.from({ length: repeat }).map((_, i) => (
+          <div key={i}>
             {text.map((item, index) => (
               <h6
                 className={cn(
@@ -47,7 +47,7 @@ export const ScrollingText = ({
                     : "",
                   "font-poppins underline uppercase whitespace-nowrap	text-3xl md:text-5xl"
                 )}
-                key={index}
+                key={item}
               >
                 {item}
               </h6>

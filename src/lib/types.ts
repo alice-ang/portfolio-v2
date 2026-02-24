@@ -96,6 +96,24 @@ interface Temp {
   morn: number;
 }
 
+export type AboutExperience = {
+  company: string;
+  role: string;
+  year: string;
+};
+
+export type AboutImage = {
+  image: { id: string; url: string; alt: string };
+  link?: string;
+};
+
+export type AboutData = {
+  heading: string;
+  bio: Record<string, unknown> | null;
+  images: AboutImage[];
+  experience: AboutExperience[];
+};
+
 export type Stack = {
   id?: string;
   name: string;
