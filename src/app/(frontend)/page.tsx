@@ -6,6 +6,7 @@ import {
   ScrollingText,
   Table,
 } from "@/components";
+import { JobsTable } from "@/components/JobsTable";
 import { fetchProjects } from "@/lib/api";
 import { jobs } from "@/lib/mock";
 import { PreviewProject, TECH_LABELS } from "@/lib/types";
@@ -73,19 +74,7 @@ export default  function Home() {
       </section>
 
       <AboutSection />
-      <Constraints>
-        <div className="flex justify-between items-center">
-          <h3 className="pb-4">Experience</h3>
-          <Link
-            href="/CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download cv
-          </Link>
-        </div>
-        <Table items={jobs} />
-      </Constraints>
+      <JobsTable/>
       {projects && (
         <section>
           <HorizontalScrollCarousel projects={projects} />

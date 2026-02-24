@@ -1,7 +1,8 @@
-import { AboutData, PreviewProject, Project, Stack } from "./types";
+import { AboutData, AboutExperience, PreviewProject, Project, Stack } from "./types";
 import { useQuery } from "@tanstack/react-query";
 
 const BASE_URL = process.env.NEXT_PUBLIC_PAYLOAD_API_URL ?? "http://localhost:3000";
+
 
 export const fetchAbout = async (): Promise<AboutData> => {
   const res = await fetch(
@@ -31,6 +32,16 @@ export const fetchAbout = async (): Promise<AboutData> => {
       year: e.year ?? '',
     })),
   };
+};
+
+export const useExperience = () => {
+  return useQuery({
+    queryKey: ["experience"],
+    queryFn: async (): Promise<AboutExperience[]> => {
+      const data = await fetchAbout();
+      return data.experience;
+    },
+  });
 };
 
 export const fetchStack = async (): Promise<Stack[]> => {
