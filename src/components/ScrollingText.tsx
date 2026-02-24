@@ -38,7 +38,7 @@ export const ScrollingText = ({
     >
       <motion.div style={{ x }} className="flex flex-row space-x-8">
         {Array.from({ length: repeat }).map(() => (
-          <>
+          <div>
             {text.map((item, index) => (
               <h6
                 className={cn(
@@ -52,7 +52,7 @@ export const ScrollingText = ({
                 {item}
               </h6>
             ))}
-          </>
+          </div>
         ))}
       </motion.div>
     </div>

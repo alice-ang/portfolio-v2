@@ -96,29 +96,10 @@ interface Temp {
   morn: number;
 }
 
-enum Tech {
-  EXPO,
-  FRAMER,
-  REACT,
-  NEXTJS,
-  HYGRAPH,
-  TAILWIND,
-  FIREBASE,
-  SUPABASE,
-  TANSTACK_QUERY,
-  REACT_NATIVE,
-  PRISMIC,
-  TYPESCRIPT,
-  FLUTTER,
-  SANITY,
-  STRAPI,
-  FIGMA,
-  GRAPHQL,
-}
-
 export type Stack = {
+  id?: string;
   name: string;
-  tech: Tech;
+  tech: string;
 };
 
 export type Image = {
@@ -136,9 +117,7 @@ export type Project = {
   id: string;
   title: string;
   images: Image[];
-  description: {
-    markdown: any;
-  };
+  description: Record<string, unknown> | null;
   projectStatus: ProjectStatus;
   dateOfCreation: string;
   projectLinks: ProjectLink[];

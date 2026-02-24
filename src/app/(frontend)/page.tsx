@@ -110,7 +110,6 @@ export default function Home() {
           <h3 className="pb-4">Experience</h3>
           <Link
             href="/CV.pdf"
-            locale={false}
             target="_blank"
             rel="noopener noreferrer"
           >
