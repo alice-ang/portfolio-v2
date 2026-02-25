@@ -26,12 +26,14 @@ export default function Project() {
   const showScrollIndication = useTransform(
     scrollYProgress,
     [0.6, 0.8],
-    [1, 0]
+    [1, 0],
   );
 
   if (!data) {
     return;
   }
+
+  console.log(data.stacks);
 
   return (
     <div
@@ -44,7 +46,7 @@ export default function Project() {
             data.projectStatus === "WIP"
               ? "bg-palette-yellow"
               : "bg-palette-green",
-            "px-8 py-2"
+            "px-8 py-2",
           )}
         >
           <p className="text-palette-darkBackground">{data.projectStatus}</p>
@@ -52,9 +54,13 @@ export default function Project() {
         <div className="">
           <div className="flex gap-2 justify-center flex-wrap">
             {data.stacks.map((stack) => (
-              <h6 className="text-center uppercase text-palette-lightGrey">
-                {stack.name}
-              </h6>
+              <>
+                {stack.tech.map((t) => (
+                  <h6 className="text-center uppercase text-palette-lightGrey">
+                    {t}
+                  </h6>
+                ))}
+              </>
             ))}
           </div>
 

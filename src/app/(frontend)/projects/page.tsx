@@ -1,7 +1,7 @@
 "use client";
 import { Constraints, Tooltip } from "@/components";
 import { fetchProjects, fetchStack } from "@/lib/api";
-import { PreviewProject, ProjectStatus, Stack } from "@/lib/types";
+import { PreviewProject, ProjectStatus, Stack, TECH_LABELS } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import Image from "next/image";
@@ -23,7 +23,19 @@ export default function About() {
     "ALL"
   );
 
-  const [activeTags, setActiveTags] = useState<Stack[]>([]);
+  const [activeTags, setActiveTags] = useState<string[]>([]);
+
+  const allTechs = useMemo(() => {
+    if (!stacks) return [];
+    const techSet = new Set<string>();
+    stacks.forEach((s) => s.tech?.forEach((t) => techSet.add(t)));
+    return Array.from(techSet).sort();
+  }, [stacks]);
+
+  const stackTechMap = useMemo(() => {
+    if (!stacks) return {} as Record<string, string[]>;
+    return Object.fromEntries(stacks.map((s) => [s.name, s.tech ?? []]));
+  }, [stacks]);
 
   const filteredProjects = useMemo(() => {
     if (!projects) return [];
@@ -34,11 +46,12 @@ export default function About() {
 
     if (activeTags.length === 0) return statusFiltered;
 
-    const activeTagNames = new Set(activeTags.map((t) => t.name));
     return statusFiltered.filter((p) =>
-      (p.stacks ?? []).some((s) => activeTagNames.has(s.name))
+      (p.stacks ?? []).some((s) =>
+        (stackTechMap[s.name] ?? []).some((t) => activeTags.includes(t))
+      )
     );
-  }, [projects, activeStatus, activeTags]);
+  }, [projects, activeStatus, activeTags, stackTechMap]);
 
   function StatusButton({
     status,
@@ -123,24 +136,24 @@ export default function About() {
                 </div>
               </div>
               <div className="flex gap-2 flex-wrap">
-                {stacks?.map((stack, i) => (
+                {allTechs.map((tech) => (
                   <button
-                    key={i}
+                    key={tech}
                     className={cn(
                       "px-4 py-1 rounded-full w-fit border border-palette-yellow animation-transition hover:bg-palette-yellow hover:text-palette-background",
-                      activeTags.includes(stack)
+                      activeTags.includes(tech)
                         ? "bg-palette-yellow text-palette-background"
                         : "bg-transparent text-palette-white"
                     )}
                     onClick={() =>
                       setActiveTags(
-                        activeTags.includes(stack)
-                          ? activeTags.filter((t) => t !== stack)
-                          : [...activeTags, stack]
+                        activeTags.includes(tech)
+                          ? activeTags.filter((t) => t !== tech)
+                          : [...activeTags, tech]
                       )
                     }
                   >
-                    {stack.name}
+                    {TECH_LABELS[tech] ?? tech}
                   </button>
                 ))}
               </div>
