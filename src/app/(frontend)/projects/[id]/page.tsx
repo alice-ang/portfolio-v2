@@ -28,6 +28,11 @@ export default function Project() {
     [0.6, 0.8],
     [1, 0],
   );
+  const backdropOpacity = useTransform(
+    scrollYProgress,
+    [0.1, 0.35, 0.55, 0.72],
+    [0, 1, 1, 0],
+  );
 
   if (!data) {
     return;
@@ -105,12 +110,17 @@ export default function Project() {
           Go back
         </motion.h2>
 
+        <motion.div
+          style={{ opacity: backdropOpacity }}
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 pointer-events-none"
+        />
+
         {data.images && (
           <motion.div
             style={{
               y,
             }}
-            className=" w-full absolute aspect-video space-y-8 md:space-y-12 "
+            className=" w-full absolute aspect-video space-y-8 md:space-y-12 z-20"
             whileInView={{ opacity: 1 }}
             initial={{ opacity: 0 }}
           >
