@@ -26,12 +26,19 @@ export default function Project() {
   const showScrollIndication = useTransform(
     scrollYProgress,
     [0.6, 0.8],
-    [1, 0]
+    [1, 0],
+  );
+  const backdropOpacity = useTransform(
+    scrollYProgress,
+    [0.1, 0.35, 0.55, 0.72],
+    [0, 1, 1, 0],
   );
 
   if (!data) {
     return;
   }
+
+  console.log(data.stacks);
 
   return (
     <div
@@ -44,7 +51,7 @@ export default function Project() {
             data.projectStatus === "WIP"
               ? "bg-palette-yellow"
               : "bg-palette-green",
-            "px-8 py-2"
+            "px-8 py-2",
           )}
         >
           <p className="text-palette-darkBackground">{data.projectStatus}</p>
@@ -52,9 +59,13 @@ export default function Project() {
         <div className="">
           <div className="flex gap-2 justify-center flex-wrap">
             {data.stacks.map((stack) => (
-              <h6 className="text-center uppercase text-palette-lightGrey">
-                {stack.name}
-              </h6>
+              <>
+                {stack.tech.map((t) => (
+                  <h6 className="text-center uppercase text-palette-lightGrey">
+                    {t}
+                  </h6>
+                ))}
+              </>
             ))}
           </div>
 
@@ -99,12 +110,17 @@ export default function Project() {
           Go back
         </motion.h2>
 
+        <motion.div
+          style={{ opacity: backdropOpacity }}
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm z-10 pointer-events-none"
+        />
+
         {data.images && (
           <motion.div
             style={{
               y,
             }}
-            className=" w-full absolute aspect-video space-y-8 md:space-y-12 "
+            className=" w-full absolute aspect-video space-y-8 md:space-y-12 z-20"
             whileInView={{ opacity: 1 }}
             initial={{ opacity: 0 }}
           >
